@@ -1,4 +1,11 @@
 <?php
+session_start();
+
+if (isset($_SESSION["Login"])) {
+    $first_name = $_SESSION['first_name'];
+} else {
+    $first_name = "undefined";
+}
 ?>
 
 <!DOCTYPE html>
@@ -6,6 +13,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Includes/CSS/style.css">
+    <link rel="stylesheet" href="Includes/CSS/home.css">
     <title>Home</title>
 </head>
 <body>
@@ -20,7 +29,10 @@
         <!--badge image-->
         </section>
         <section id="FavoritePlantsSec">
-<!--div-->
+<div id="shelfs">
+            <img src="Includes/images/Shelf.png" alt="shelf">
+            <img src="Includes/images/Shelf.png" alt="shelf">
+        </div>
    
         </section>
         <section id="PlantStatusSec">
