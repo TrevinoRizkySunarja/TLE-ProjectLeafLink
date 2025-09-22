@@ -1,11 +1,6 @@
 <?php
 session_start();
 
-if (isset($_SESSION["Login"])) {
-    $first_name = $_SESSION['first_name'];
-} else {
-    $first_name = "undefined";
-}
 ?>
 
 <!DOCTYPE html>
@@ -18,25 +13,28 @@ if (isset($_SESSION["Login"])) {
     <title>Hoofdpagina</title>
 </head>
 <body>
-    <header> <!--remove later on to put into a seperate file-->
-
-    </header>
-    <main>
-        <section id="RecentBagesSec">
+<header>
+    <h1>Home</h1>
+</header>
+<main>
+    <section id="RecentBagesSec">
+        <div class="border">
+            <h2>Recente badges</h2>
+        </div>
         <!--Span or so for the 'title'-->
         <!--div (for every badge)-->
         <!--link to the badge page and "opening" the right badge-->
         <!--badge image-->
-        </section>
-        <section id="FavoritePlantsSec">
-            <div id="shelfs">
-                <img src="Includes/images/Shelf.png" alt="shelf">
-                <img src="Includes/images/Shelf.png" alt="shelf">
-            </div>
-        </section>
-        <section id="PlantStatusSec">
-<!--div-->
-        </section>
-    </main>
+        <!--div-->
+    </section>
+    <section id="FavoritePlantsSec">
+        <div id="shelfs">
+            <img src="Includes/images/shelf.png" alt="plank">
+            <img src="Includes/images/shelf.png" alt="plank">
+        </div>
+    </section>
+    <section id="PlantStatusSec">
+    </section>
+</main>
 </body>
 </html>

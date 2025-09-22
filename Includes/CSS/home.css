@@ -2,18 +2,44 @@
     margin: 0;
 }
 
+body {
+    background: var(--color3);
+    background-image: url("../images/tiles.png");
+    background-repeat: repeat-y;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: 125%;
+}
+
 header {
     background: var(--color1);
     padding: 2vh 0;
+    text-align: center;
+    border-bottom: 5px solid #ABCFAE;
 }
 
-.collection {
+.border {
+    text-align: center;
+    padding: 2vh;
+    background-image: url("../images/noteplank.png");
+    background-size: 60%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#RecentBagesSec {
+    background: #E9CDA2;
+    border-bottom: 5px solid black;
+    padding: 0 0 10vh 0;
+}
+
+#FavoritePlantsSec {
     width: 75%;
     margin: 0 auto;
 }
 
 #shelfs img {
-    margin-top: 5vh;
+    margin-top: 10vh;
 }
 
 img {
