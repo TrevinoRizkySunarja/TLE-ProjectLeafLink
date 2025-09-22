@@ -19,6 +19,9 @@
         </div>
         <section id="plantenLijst" class="planten-lijst>">
             <!-- Planten worden hier dynamisch geladen -->
+            <div id="laadMeerKnop" class="laad-meer-knop">
+                <p>Laad meer</p>
+            </div>
         </section>
     </main>
 </body>

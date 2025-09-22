@@ -1,7 +1,11 @@
 window.addEventListener("load", init)
 
+let page = 1;
+
 function init() {
-    loadData("https://perenual.com/api/v2/species-list?key=sk-wuwj68d12c997cb4012512", showData)
+    loadData("https://perenual.com/api/v2/species-list?key=sk-wuwj68d12c997cb4012512&page=" + page, showData);
+
+    document.getElementById("laadMeerKnop").addEventListener("click", loadNextPage);
 }
 
 function loadData(url, successHandler) {
@@ -21,4 +25,9 @@ function errorHandler(error) {
 
 function showData(data) {
     console.log(data)
+}
+
+function loadNextPage() {
+    page++;
+    loadData("https://perenual.com/api/v2/species-list?key=sk-wuwj68d12c997cb4012512&page=" + page, showData)
 }
