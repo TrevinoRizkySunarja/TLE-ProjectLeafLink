@@ -11,7 +11,7 @@
     <script src="Includes/JS/archief.js" defer></script>
 </head>
 <body>
-    <?php include 'Includes/header.php'; ?>
+    <?php include 'Includes/hoofd.php'; ?>
     <main>
         <h1>Planten Archief</h1>
         <div class="zoek-balk">
