@@ -1,7 +1,7 @@
 <?php
 
 // Database connectie (pas eventueel aan naar jouw gegevens)
-$host = "localhost";
+$host = "127.0.0.1";
 $user = "root";
 $pass = "";
 $db = "leaflink";
@@ -39,6 +39,8 @@ $conn->close();
 <html lang="nl">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="Includes/CSS/style.css">
+    <link rel="stylesheet" href="Includes/CSS/home.css">
     <title>LeafLink - Plant toevoegen</title>
 </head>
 <body>
