@@ -17,9 +17,9 @@
         <div class="zoek-balk">
             <input type="text" id="zoekInvoer" placeholder="Zoek planten...">
         </div>
-        <div id="plantenLijst" class="planten-lijst>">
+        <section id="plantenLijst" class="planten-lijst>">
             <!-- Planten worden hier dynamisch geladen -->
-        </div>
+        </section>
     </main>
 </body>
 </html>
