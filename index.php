@@ -23,23 +23,19 @@ if (isset($_SESSION["Login"])) {
     </header>
     <main>
         <section id="RecentBagesSec">
-<!--Span or so for the 'title'-->
-<!--div (for every badge)-->
-    <!--link to the badge page and "opening" the right badge-->
+        <!--Span or so for the 'title'-->
+        <!--div (for every badge)-->
+        <!--link to the badge page and "opening" the right badge-->
         <!--badge image-->
         </section>
         <section id="FavoritePlantsSec">
-<div id="shelfs">
-            <img src="Includes/images/Shelf.png" alt="shelf">
-            <img src="Includes/images/Shelf.png" alt="shelf">
-        </div>
-   
+            <div id="shelfs">
+                <img src="Includes/images/Shelf.png" alt="shelf">
+                <img src="Includes/images/Shelf.png" alt="shelf">
+            </div>
         </section>
         <section id="PlantStatusSec">
 <!--div-->
-    <!---->
-
-
         </section>
     </main>
 </body>
