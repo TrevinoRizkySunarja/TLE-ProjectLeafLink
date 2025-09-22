@@ -27,8 +27,8 @@ if (isset($_SESSION["Login"])) {
 <main>
     <section class="collection">
         <div id="shelfs">
-            <img src="Includes/images/Shelf.png" alt="shelf">
-            <img src="Includes/images/Shelf.png" alt="shelf">
+            <img src="Includes/images/kast.png" alt="shelf">
+            <img src="Includes/images/kast.png" alt="shelf">
         </div>
     </section>
 </main>
