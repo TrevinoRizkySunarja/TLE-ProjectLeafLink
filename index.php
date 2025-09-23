@@ -10,9 +10,11 @@ require_once 'Includes/login_check.php';
     <link rel="stylesheet" href="Includes/CSS/style.css">
     <link rel="stylesheet" href="Includes/CSS/home.css">
     <script src="Includes/JS/home.js" defer></script>
+    <script src="Includes/JS/menu.js" defer></script>
     <title>Hoofdpagina</title>
 </head>
 <body>
+<?php include 'Includes/nav.php'; ?>
 <?php include 'Includes/hoofd.php'; ?>
 <main>
     <section id="RecentBagesSec">
@@ -45,6 +47,7 @@ require_once 'Includes/login_check.php';
         </div>
         <img class="close" src="Includes/images/close.png" alt="">
     </section>
+    <section id="plantFacts"></section>
 </main>
 </body>
 </html>
