@@ -21,6 +21,11 @@ session_start();
         <div class="border">
             <h2>Recente badges</h2>
         </div>
+        <div id="badges">
+            <a href=""><img src="Includes/images/firstplantBadge.png" alt=""></a>
+            <a href=""><img src="Includes/images/repotaplantBadge.png" alt=""></a>
+            <a href=""><img src="Includes/images/wateringBadge.png" alt=""></a>
+        </div>
         <!--Span or so for the 'title'-->
         <!--div (for every badge)-->
         <!--link to the badge page and "opening" the right badge-->
