@@ -1,9 +1,19 @@
-// Amount of time in seconds x 1000
-var countDownTime = 10;
+document.getElementById("waterPlant").addEventListener("click", waterPlant);
+window.onload = function(){
+    goodState = false;
+};
 
+var countDownTime;
+var goodState;
+
+function resetTime(){
+    countDownTime = 10;
+    runWaterTimer();
+};
+
+function runWaterTimer(){
 var waterPlant = setInterval(function() {
 
-  // It always ends on 0 so why change it?
   var endTimer = 0;
 
   // Distance between countdown time and the ending for calculation, can be removed after display is gone
@@ -21,14 +31,25 @@ var waterPlant = setInterval(function() {
   if (distance <= 0) {
     clearInterval(waterPlant);
     document.getElementById("demo").innerHTML = "EXPIRED";
-    //on experiation change plant image
+    goodState = false;
+    //document.getElementById("plantImg").src = "plantDying.png";
   } else {
-  countDownTime = countDownTime - 1;
+    countDownTime = countDownTime - 1;
   }
 }, 1000);
+};
+
+
 
 //function to change plant image based on what timer ran out (first version is water)
+function waterPlant(){
+    if (goodState == false){
+        //document.getElementById("plantImg").src = "plantAlive.png";
+        goodState = true;
+        resetTime();
+    } else if (goodState == true){
+        //don't do anything cuz nothing is needed, kept this just in case of a notify?
+    }
+};
 
 //function to reset timer once the user has watered the plant (no concequences if they wait too long)
-
-//

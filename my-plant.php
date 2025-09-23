@@ -17,6 +17,7 @@
         <div id="infoAlarm"></div>
         <div id="plant">
 <!--tag-->
+<img src="" alt="">
 <!--plant-->
 <!--chair-->
         </div>
@@ -24,7 +25,7 @@
             <h3>Joyce</h3>
             <button>edit name</button>
             <div>
-                <button>Water</button>
+                <button id="waterPlant">Water</button>
                 <button>Verander pot</button>
                 <button>Bemest</button>
                 <button>Bij knippen</button>
