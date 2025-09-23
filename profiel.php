@@ -1,5 +1,6 @@
 <?php
 include 'Includes/connectie.php';
+require_once 'Includes/login_check.php'; 
 
 ?>
 
