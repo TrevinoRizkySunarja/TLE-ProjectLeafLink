@@ -1,6 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Alan+Sans:wght@300..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka&display=swap');
 
-*{
+@font-face {
+    font-family: Lazytype;
+    src: url("../fonts/Lazytype-1jz0Z.ttf");
+}
+
+* {
 
     /*Color palette*/
     --color1: #7da44d;
@@ -12,11 +18,27 @@
     --color7: #41535d;
 }
 
-@media only screen and (max-width: 412px) { /*Need to do more research into other common screen sizes so it won't break*/
-   /*ID's*/
+h1 {
+    font-family: "Fredoka", sans-serif;
+    font-size: 2.5rem;
+    font-weight: bold;
+}
 
+h2 {
+    font-family: "Fredoka", sans-serif;
+    font-size: 2rem;
+}
 
+h4 {
+    font-family: Lazytype, sans-serif;
+    font-size: 1.5rem;
+    font-weight: normal;
+}
+
+@media only screen and (max-width: 412px) {
+    /*Need to do more research into other common screen sizes so it won't break*/
+    /*ID's*/
     /*classes*/
 
- 
+
 }

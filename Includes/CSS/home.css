@@ -16,13 +16,14 @@ header {
     padding: 2vh 0;
     text-align: center;
     border-bottom: 5px solid #ABCFAE;
+    box-shadow: 0 20px;
 }
 
 .border {
     text-align: center;
     padding: 2vh;
     background-image: url("../images/noteplank.png");
-    background-size: 60%;
+    background-size: 70%;
     background-position: center;
     background-repeat: no-repeat;
 }
@@ -30,7 +31,19 @@ header {
 #RecentBagesSec {
     background: #E9CDA2;
     border-bottom: 5px solid black;
-    padding: 0 0 10vh 0;
+    padding: 0 0 2vh 0;
+}
+
+#badges {
+    padding: 2vh;
+    display: flex;
+    width: 80%;
+    margin: 0 auto;
+    gap: 2vw;
+}
+
+#badges img {
+    max-width: 50vw;
 }
 
 #FavoritePlantsSec {
