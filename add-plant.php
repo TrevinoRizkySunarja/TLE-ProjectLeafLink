@@ -1,16 +1,6 @@
 <?php
-
-// Database connectie (pas eventueel aan naar jouw gegevens)
-$host = "127.0.0.1";
-$user = "root";
-$pass = "";
-$db = "leaflink";
-
-$conn = new mysqli($host, $user, $pass, $db);
-
-if ($conn->connect_error) {
-    die("Database connectie mislukt: " . $conn->connect_error);
-}
+    require_once 'Includes/login_check.php'; 
+    require_once 'Includes/connectie.php';
 
 // Check of het formulier verzonden is
 if ($_SERVER["REQUEST_METHOD"] == "POST") {

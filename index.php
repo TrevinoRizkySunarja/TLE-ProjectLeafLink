@@ -1,6 +1,5 @@
 <?php
-session_start();
-
+require_once 'Includes/login_check.php';
 ?>
 
 <!DOCTYPE html>
