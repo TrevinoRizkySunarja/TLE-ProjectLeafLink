@@ -32,7 +32,7 @@ var waterPlant = setInterval(function() {
     clearInterval(waterPlant);
     document.getElementById("demo").innerHTML = "EXPIRED";
     goodState = false;
-    //document.getElementById("plantImg").src = "plantDying.png";
+    document.getElementById("plantImg").src = "Includes/images/plantDehidrated.png";
   } else {
     countDownTime = countDownTime - 1;
   }
@@ -44,7 +44,7 @@ var waterPlant = setInterval(function() {
 //function to change plant image based on what timer ran out (first version is water)
 function waterPlant(){
     if (goodState == false){
-        //document.getElementById("plantImg").src = "plantAlive.png";
+        document.getElementById("plantImg").src = "Includes/images/digitalPlant.png";
         goodState = true;
         resetTime();
     } else if (goodState == true){
