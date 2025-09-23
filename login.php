@@ -73,23 +73,32 @@ if (isset($_POST['submit'])) {
     <form action="" method="post">
         <div>
             <label for="username">gebruikersnaam</label>
-            <input id="username" name="username" type="text" placeholder="Voer gebruikersnaam in"></input>
+            <input id="username" name="username" type="text" placeholder="Voer gebruikersnaam in" value="<?= htmlspecialchars($_POST['username'] ?? '') ?>">
             <p class="help is-danger">
                 <?= $errors['username'] ?? '' ?>
             </p>
         </div>
         <div>
             <label for="password">Wachtwoord</label>
-            <input id="password" name="password" type="text" placeholder="Voer wachtwoord in"></input>
+            <input id="password" name="password" type="password" placeholder="Voer wachtwoord in">
             <p class="help is-danger">
                 <?= $errors['password'] ?? '' ?>
             </p>
         </div>
-
         <div>
-            <button type="submit" name="submit"></button>
+            <button type="submit" name="submit">Login</button>
         </div>
-
+        <?php if (
+            isset($_POST['submit']) && 
+            empty($errors['username']) && 
+            empty($errors['password']) && 
+            isset($errors['loginFailed'])
+        ): ?>
+        <p class="help is-danger" style="color: red;">
+            <?= htmlspecialchars($errors['loginFailed']) ?>
+        </p>
+        <?php endif; ?>
     </form>
+
 </body>
 </html>
