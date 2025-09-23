@@ -17,7 +17,7 @@
         <div id="infoAlarm"></div>
         <div id="plant">
 <!--tag-->
-<img src="" alt="">
+<img src="Includes/images/digitalPlant.png" alt="" id="plantImg">
 <!--plant-->
 <!--chair-->
         </div>
