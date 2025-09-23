@@ -2,36 +2,24 @@
     margin: 0;
 }
 
-body {
-    background: var(--color3);
-    background-image: url("../images/tiles.png");
-    background-repeat: repeat-y;
-    background-position: center;
-    background-attachment: fixed;
-    background-size: 125%;
-}
-
-header {
-    background: var(--color1);
-    padding: 2vh 0;
-    text-align: center;
-    border-bottom: 5px solid #ABCFAE;
-    box-shadow: 0 20px;
-}
-
 .border {
     text-align: center;
     padding: 2vh;
     background-image: url("../images/noteplank.png");
-    background-size: 70%;
+    background-size: 100%;
     background-position: center;
     background-repeat: no-repeat;
+    position: absolute;
+    top: -15px;
+    /*Fixen op elke mobiel*/
+    left: 17vw;
 }
 
 #RecentBagesSec {
+    position: relative;
     background: #E9CDA2;
-    border-bottom: 5px solid black;
-    padding: 0 0 2vh 0;
+    border-bottom: 3px solid black;
+    padding: 6vh 0 2vh 0;
 }
 
 #badges {
@@ -51,10 +39,55 @@ header {
     margin: 0 auto;
 }
 
-#shelfs img {
-    margin-top: 10vh;
+/*de shelf is de background van de div zodat de plaatjes er makkelijk op kunnen*/
+.shelf {
+    background-image: url("../images/shelf.png");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    min-height: 10vh;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.shelf img {
+    max-height: 10vh;
+    width: auto;
+    padding: 2vh 0 7vh 0;
+    /*padding: 0 0 7vh 7vw;*/
 }
 
 img {
     width: 100%;
+}
+
+#PlantStatusSec {
+    background: #E9CDA2;
+    border-top: 3px solid black;
+    margin-top: 2vh;
+    min-height: 18vh;
+    display: none;
+    text-align: center;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    padding-top: 8vh;
+}
+
+#plantInfo {
+    min-height: 12vh;
+    width: 80%;
+    margin: 0 auto;
+    background: var(--color1);
+    border: 5px solid var(--color4);
+    border-radius: 10px;
+    padding: 1vh 1vw;
+}
+
+.close {
+    width: 7vw;
+    position: absolute;
+    top: 5px;
+    right: 5px;
 }
