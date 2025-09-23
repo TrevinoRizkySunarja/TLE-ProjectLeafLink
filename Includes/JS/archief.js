@@ -40,6 +40,10 @@ function showData(data) {
 
         plantAfbeelding.alt = "Foto van " + plant.common_name;
         plantCard.classList.add("plant-card")
+        plantCard.addEventListener("click", () => {
+            console.log("Plant clicked:", plant);
+            // showPlantDetails(plant);
+        });
         plantCard.appendChild(plantAfbeelding)
         list.appendChild(plantCard)
     })
@@ -50,4 +54,8 @@ function loadNextPage(filterValue) {
         page++;
         loadData("https://perenual.com/api/v2/species-list?key=sk-wuwj68d12c997cb4012512&page=" + page, showData)
     }
+}
+
+function showPlantDetails(plant) {
+    // Hier kun je de logica toevoegen om meer details van de plant weer te geven
 }
