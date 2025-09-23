@@ -35,6 +35,23 @@ h4 {
     font-weight: normal;
 }
 
+body {
+    background: var(--color3);
+    background-image: url("../images/tiles.png");
+    background-repeat: repeat-y;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: 125%;
+}
+
+header {
+    background: var(--color1);
+    padding: 2vh 0;
+    text-align: center;
+    border-bottom: 5px solid #ABCFAE;
+    /*box-shadow: 0 15px 10px 1px;*/
+}
+
 @media only screen and (max-width: 412px) {
     /*Need to do more research into other common screen sizes so it won't break*/
     /*ID's*/

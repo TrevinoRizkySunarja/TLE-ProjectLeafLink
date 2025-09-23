@@ -10,35 +10,41 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="Includes/CSS/style.css">
     <link rel="stylesheet" href="Includes/CSS/home.css">
+    <script src="Includes/JS/home.js" defer></script>
     <title>Hoofdpagina</title>
 </head>
 <body>
-<header>
-    <h1>Home</h1>
-</header>
+<?php include 'Includes/hoofd.php'; ?>
 <main>
     <section id="RecentBagesSec">
         <div class="border">
             <h2>Recente badges</h2>
         </div>
         <div id="badges">
+            <!--linken naar de badgepage en de goeie badge laten zien-->
             <a href=""><img src="Includes/images/firstplantBadge.png" alt=""></a>
             <a href=""><img src="Includes/images/repotaplantBadge.png" alt=""></a>
             <a href=""><img src="Includes/images/wateringBadge.png" alt=""></a>
         </div>
-        <!--Span or so for the 'title'-->
-        <!--div (for every badge)-->
-        <!--link to the badge page and "opening" the right badge-->
-        <!--badge image-->
-        <!--div-->
     </section>
     <section id="FavoritePlantsSec">
-        <div id="shelfs">
-            <img src="Includes/images/shelf.png" alt="plank">
-            <img src="Includes/images/shelf.png" alt="plank">
+        <div class="shelf">
+            <img class="favoritePlant" src="Includes/images/cactus1.png" alt="">
+            <img class="favoritePlant" src="Includes/images/cactus2.png" alt="">
+        </div>
+        <div class="shelf">
+            <img class="favoritePlant" src="Includes/images/monsterplant.png" alt="">
         </div>
     </section>
+    <!--Popup voor info over de plant:-->
     <section id="PlantStatusSec">
+        <div class="border">
+            <h2>Favoriete planten</h2>
+        </div>
+        <div id="plantInfo">
+            <p>Zieke info over de plant epic!</p>
+        </div>
+        <img class="close" src="Includes/images/close.png" alt="">
     </section>
 </main>
 </body>
