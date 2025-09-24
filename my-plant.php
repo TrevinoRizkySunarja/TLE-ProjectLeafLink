@@ -13,12 +13,18 @@
 <body>
     <header></header>
     <main>
+        <div id="popUp" class="popUp">
+            <div class="popup-content">
+                <span class="close" id="closeSpan">&times;</span>
+                <p id="popUpText">Text.joke</p>
+            </div>
+        </div>
+
         <p id="demo"></p>
         <div id="infoAlarm"></div>
         <div id="plant">
 <!--tag-->
-<img src="Includes/images/digitalPlant.png" alt="" id="plantImg">
-<!--plant-->
+<img src="Includes/images/digitalPlant.png" alt="" id="plantImg"> <!--plant-->
 <!--chair-->
         </div>
         <div id="interaction">
