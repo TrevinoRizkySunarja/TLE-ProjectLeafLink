@@ -1,5 +1,6 @@
 * {
     margin: 0;
+    box-sizing: border-box;
 }
 
 main {
@@ -23,7 +24,7 @@ main {
     padding: 16px;
 }
 
-.plant-card {
+.plant-card, .details-image-container {
     width: 128px;
     height: 128px;
     background: var(--color2);
@@ -32,7 +33,7 @@ main {
     border: 2px solid var(--color5);
 }
 
-.plant-card img {
+.plant-card img, .details-image-container img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -47,4 +48,50 @@ main {
     justify-content: center;
     align-items: center;
     border-radius: 8px;
+}
+
+.return-button {
+    width: 11vw;
+    height: 11vw;
+    position: fixed;
+    top: 20px;
+    left: 15px;
+    background: var(--color2);
+}
+
+.plant-details-header {
+    width: 100vw;
+    display: flex;
+    gap: 16px;
+    padding: 16px;
+}
+
+.details-image-container {
+    min-width: 128px;
+    min-height: 128px;
+}
+
+.description, .plant-details {
+    width: 100%;
+    padding: 16px;
+    background: var(--color3);
+    border-radius: 8px;
+    border: 2px solid var(--color5);
+}
+
+.description {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.description h2 {
+    font-size: 1.5rem;
+}
+
+.plant-details {
+    width: calc(100% - 32px);
+    margin: 0 16px;
 }
