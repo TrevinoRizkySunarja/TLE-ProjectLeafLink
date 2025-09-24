@@ -1,12 +1,12 @@
 document.addEventListener("click", (e) => clickHandler(e));
-// window.addEventListener("load", loadPage());
+window.addEventListener("load", loadPage());
 
 let popup = document.getElementById("PlantStatusSec");
 
-// function loadPage() {
-//     let h1 = document.getElementById("headerH1");
-//     h1.innerText = "Home";
-// }
+function loadPage() {
+    let h1 = document.getElementById("headerH1");
+    h1.innerText = "Home";
+}
 
 function clickHandler(e) {
     if (e.target.classList.contains("favoritePlant")) {

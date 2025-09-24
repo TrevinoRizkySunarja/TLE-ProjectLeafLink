@@ -2,5 +2,5 @@
 ?>
 
 <header>
-    <h1>Home</h1>
+    <h1 id="headerH1">Home</h1>
 </header>
