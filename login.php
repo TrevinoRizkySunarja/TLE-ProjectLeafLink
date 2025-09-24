@@ -38,7 +38,7 @@ if (isset($_POST['submit'])) {
 
             // Check if the provided password matches the stored password in the database
 //            if (password_verify($password, $admin['password'])) {
-            if ($password === $user['password']) {
+            if (password_verify($password, $user['password'])) {
 
                 // Password is correct
 
@@ -99,6 +99,7 @@ if (isset($_POST['submit'])) {
         </p>
         <?php endif; ?>
     </form>
+    <a href="./registratie.php">Registreer</a>
 
 </body>
 </html>
