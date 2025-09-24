@@ -19,10 +19,9 @@ if (isset($_SESSION['user'])) {
 </head>
 <body>
 
-<?php include 'Includes/nav.php'; ?>
 
 <header>
-	<!-- <h1>Profile</h1> -->
+	<h1>Profiel</h1>
 
 </header> 
 
@@ -48,10 +47,14 @@ if (isset($_SESSION['user'])) {
 	<div class="board">
     <h2>My Plants</h2>
 </div>
-
+    
     <div class="shelf">
-    <img src="Includes/images/shelf.png" alt="plank">
+    <!-- insert plants -->
  </div>
+ <div class="shelf">
+    <!-- insert plants -->
+ </div>
+ 
 </section>
 
         
