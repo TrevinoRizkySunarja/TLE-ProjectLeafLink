@@ -31,7 +31,9 @@ function showData(data) {
     let list = document.getElementById("plantenLijst")
     data.data.forEach(plant => {
         let plantCard = document.createElement("div")
+        let plantImageContainer = document.createElement("div")
         let plantAfbeelding = document.createElement("img")
+        let plantNaam = document.createElement("p")
 
         // Als er een thumbnail image is, gebruik die, anders een placeholder
         if (plant.default_image && plant.default_image.thumbnail) {
@@ -41,12 +43,16 @@ function showData(data) {
         }
 
         plantAfbeelding.alt = "Foto van " + plant.common_name;
+        plantNaam.innerText = plant.common_name || "Naam onbekend";
         plantCard.classList.add("plant-card")
+        plantImageContainer.classList.add("plant-card-container")
         plantCard.addEventListener("click", () => {
             console.log("Plant clicked:", plant);
             showPlantDetails(plant);
         });
-        plantCard.appendChild(plantAfbeelding)
+        plantImageContainer.appendChild(plantAfbeelding)
+        plantCard.appendChild(plantImageContainer)
+        plantCard.appendChild(plantNaam)
         list.appendChild(plantCard)
     })
 }
