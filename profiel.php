@@ -13,17 +13,20 @@ if (isset($_SESSION['user'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="Includes/CSS/style.css">
+    <link rel="stylesheet" href="Includes/CSS/profiel.css">
+	<link rel="stylesheet" href="Includes/CSS/style.css">
     <title>Profiel</title>
 </head>
 <body>
+
+<?php include 'Includes/nav.php'; ?>
 
 <header>
 	<!-- <h1>Profile</h1> -->
 
 </header> 
 
-<<main>
+<main>
     <section class="profile-info">
 	<div class="avatar-container">
 		<img src="Includes/images/profile.png" >
@@ -40,15 +43,19 @@ if (isset($_SESSION['user'])) {
         <a href="add-plant.php">Add Plant</a>
 		<input type="text" id="zoekInvoer" placeholder="Search Plant...">
 </section>
-<section class="my-plants">
-    <h2>My Plants</h2>
-    <div class="favorite-plants">
-    <img src="Includes/images/shelf.png" alt="plank">
 
+<section class="my-plants">
+	<div class="board">
+    <h2>My Plants</h2>
+</div>
+
+    <div class="shelf">
+    <img src="Includes/images/shelf.png" alt="plank">
  </div>
 </section>
 
         
 </main>
+
 </body>
 </html>
