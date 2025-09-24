@@ -17,14 +17,16 @@ require_once 'Includes/login_check.php';
     <main>
         <section class="plant-details-header">
             <div class="details-image-container">
-                <img id="detailsImage" src="" alt="Plant Image">
+                <img id="plantImage" src="" alt="Plant Image">
             </div>
             <section class="description">
                 <h2 id="plantName"></h2>
-                <p id="plantDescription"></p>
+                <p id="plantScientificName"></p>
             </section>
         </section>
-        <section>
+        <section class="plant-details">
+            <h2>Details</h2>
+            <p id="description"></p>
             <!-- Extra details worden hier toegevoegd -->
         </section>
     </main>
