@@ -4,6 +4,7 @@ let page = 1;
 let filter = "none";
 
 function init() {
+    localStorage.removeItem('selectedPlant');
     loadData("https://perenual.com/api/v2/species-list?key=sk-wuwj68d12c997cb4012512&page=" + page, showData);
     loadHeaderTitle()
 
@@ -43,7 +44,7 @@ function showData(data) {
         plantCard.classList.add("plant-card")
         plantCard.addEventListener("click", () => {
             console.log("Plant clicked:", plant);
-            // showPlantDetails(plant);
+            showPlantDetails(plant);
         });
         plantCard.appendChild(plantAfbeelding)
         list.appendChild(plantCard)
@@ -63,5 +64,6 @@ function loadHeaderTitle() {
 }
 
 function showPlantDetails(plant) {
-    // Hier kun je de logica toevoegen om meer details van de plant weer te geven
+    localStorage.setItem("selectedPlant", plant.id);
+    window.location.href = "../../detail.php";
 }
