@@ -52,6 +52,18 @@ header {
     /*box-shadow: 0 15px 10px 1px;*/
 }
 
+nav {
+    width: 11vw;
+    position: fixed;
+    top: 20px;
+    left: 15px;
+}
+
+nav img {
+    width: 100%;
+}
+
+
 @media only screen and (max-width: 412px) {
     /*Need to do more research into other common screen sizes so it won't break*/
     /*ID's*/

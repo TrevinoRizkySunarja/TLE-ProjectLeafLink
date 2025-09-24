@@ -10,8 +10,10 @@ require_once 'Includes/login_check.php';
     <link rel="stylesheet" href="Includes/CSS/style.css">
     <link rel="stylesheet" href="Includes/CSS/archive.css">
     <script src="Includes/JS/archief.js" defer></script>
+    <script src="Includes/JS/menu.js" defer></script>
 </head>
 <body>
+    <?php include 'Includes/nav.php'; ?>
     <?php include 'Includes/hoofd.php'; ?>
     <main>
         <div class="zoek-balk">
