@@ -5,6 +5,7 @@ let filter = "none";
 
 function init() {
     loadData("https://perenual.com/api/v2/species-list?key=sk-wuwj68d12c997cb4012512&page=" + page, showData);
+    loadHeaderTitle()
 
     document.getElementById("laadMeerKnop").addEventListener("click", () => loadNextPage(filter));
 }
@@ -54,6 +55,11 @@ function loadNextPage(filterValue) {
         page++;
         loadData("https://perenual.com/api/v2/species-list?key=sk-wuwj68d12c997cb4012512&page=" + page, showData)
     }
+}
+
+function loadHeaderTitle() {
+    let h1 = document.getElementById("headerH1");
+    h1.innerText = "Archief";
 }
 
 function showPlantDetails(plant) {
