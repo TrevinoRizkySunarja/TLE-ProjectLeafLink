@@ -55,17 +55,17 @@ $popupJs = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name = trim($_POST['name'] ?? '');
-    $description = trim($_POST['description'] ?? '');
+    $info = trim($_POST['info'] ?? '');
 
-    if ($name === '' || $description === '') {
+    if ($name === '' || $info === '') {
         $messageHtml = "<div class='message error'>⚠️ Vul zowel een naam als een beschrijving in.</div>";
         $popupJs = "<script>alert('Vul zowel een naam als een beschrijving in.');</script>";
     } else {
-        // Basis: alleen name + description vanuit formulier
-        $cols = ['name', 'description'];
+        // Basis: alleen name + info vanuit formulier
+        $cols = ['name', 'info'];
         $placeholders = ['?', '?'];
         $types = 'ss';
-        $values = [$name, $description];
+        $values = [$name, $info];
 
         // Haal verplichte kolommen zonder default op en vul veilige standaardwaarden in
         $required = required_columns_without_default($mysqli, $TABLE);
@@ -167,8 +167,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <label for="name">Naam van de plant:</label>
         <input type="text" id="name" name="name" required>
 
-        <label for="description">Beschrijving:</label>
-        <textarea id="description" name="description" rows="4" required></textarea>
+        <label for="info">Beschrijving:</label>
+        <textarea id="info" name="info" rows="4" required></textarea>
 
         <button type="submit">Toevoegen</button>
     </form>

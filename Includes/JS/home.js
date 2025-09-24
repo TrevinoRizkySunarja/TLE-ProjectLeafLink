@@ -1,7 +1,10 @@
+import {openMenu, closeMenu} from "./menu";
+
 document.addEventListener("click", (e) => clickHandler(e));
-window.addEventListener("load", loadPage());
+window.addEventListener("load", loadPage);
 
 let popup = document.getElementById("PlantStatusSec");
+let navList = document.getElementById("navList");
 
 function loadPage() {
     let h1 = document.getElementById("headerH1");
@@ -13,6 +16,10 @@ function clickHandler(e) {
         openPopUp();
     } else if (e.target.classList.contains(("close"))) {
         closePopUp();
+    } else if (e.target.id === "navButton") {
+        openMenu();
+    } else if (e.target.id !== "navButton" && navList.classList.contains("open")) {
+        closeMenu();
     }
 }
 
