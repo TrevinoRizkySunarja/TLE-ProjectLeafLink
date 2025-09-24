@@ -1,8 +1,12 @@
 <?php
 session_start();
+require_once 'includes/connectie.php';
 
 if (isset($_SESSION['user'])) {
     $username = $_SESSION['user']['username'];
+	$result = mysqli_query($db, "SELECT COUNT(*) as total FROM plants ");
+$row = mysqli_fetch_assoc($result);
+$plantCount = $row['total'];
 } else {
     $username = "username"; // tijdelijke naam
 }
@@ -34,7 +38,7 @@ if (isset($_SESSION['user'])) {
         </div>
 </div>
 		<div class="pnb">
-        <h3>Plants</h3>
+        <h3><?= $plantCount . " " ?>Plants</h3>
         <h3>Badges</h3>      
 </div>
 </section>
