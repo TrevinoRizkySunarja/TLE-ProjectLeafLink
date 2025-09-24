@@ -2,18 +2,6 @@
     margin: 0;
 }
 
-/*kan naar style.css als die af is*/
-nav {
-    width: 11vw;
-    position: fixed;
-    top: 20px;
-    left: 15px;
-}
-
-nav img {
-    height: 100%;
-}
-
 .border {
     text-align: center;
     padding: 2vh;

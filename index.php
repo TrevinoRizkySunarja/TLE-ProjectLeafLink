@@ -9,8 +9,8 @@ require_once 'Includes/login_check.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="Includes/CSS/style.css">
     <link rel="stylesheet" href="Includes/CSS/home.css">
-    <script src="Includes/JS/home.js" defer></script>
-    <script src="Includes/JS/menu.js" defer></script>
+    <script type="module" src="Includes/JS/home.js" defer></script>
+    <script type="module" src="Includes/JS/menu.js" defer></script>
     <title>Hoofdpagina</title>
 </head>
 <body>
