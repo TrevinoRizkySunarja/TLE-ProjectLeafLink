@@ -16,6 +16,18 @@ if (isset($_SESSION['user'])) {
     $username = "username"; // tijdelijke naam
 	$plantCount = 0;   	
 }
+
+if (isset($_GET['search'])) {
+    $term = mysqli_real_escape_string($db, $_GET['search']);
+    $result = mysqli_query($db, "SELECT name FROM plants WHERE name LIKE '%$term%'");
+    $plants = [];
+    while ($row = mysqli_fetch_assoc($result)) {
+        $plants[] = $row['name'];
+    }
+    header('Content-Type: application/json');
+    echo json_encode($plants);
+    exit; // belangrijk: stop verdere rendering van de pagina
+}
 ?>
 
 <!DOCTYPE html>
@@ -25,6 +37,7 @@ if (isset($_SESSION['user'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="Includes/CSS/profiel.css">
 	<link rel="stylesheet" href="Includes/CSS/style.css">
+	<script src="Includes/JS/profiel.js" defer></script>
     <title>Profiel</title>
 </head>
 <body>
@@ -51,7 +64,10 @@ if (isset($_SESSION['user'])) {
 </section>
 <section class="manage-plants">
         <a href="add-plant.php">Add Plant</a>
+		<div class="search-wrapper">
 		<input type="text" id="zoekInvoer" placeholder="Search Plant...">
+		<div id="searchDropdown"></div>
+</div>
 </section>
 
 <section class="my-plants">

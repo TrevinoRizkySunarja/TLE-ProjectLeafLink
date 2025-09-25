@@ -87,6 +87,38 @@ header {
     font-weight: bold;
     padding-left: 40px;
     padding-right: 40px;
+    position: relative;
+}
+
+.search-wrapper {
+    position: relative;
+    width: 200px; /* even breed als input of zoals je wilt */
+}
+
+#zoekInvoer {
+    width: 100%;
+    padding: 10px;
+}
+
+#searchDropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    border: 1px solid #ccc;
+    background: white;
+    max-height: 150px;
+    overflow-y: auto;
+    z-index: 100;
+}
+
+#searchDropdown div {
+    padding: 5px;
+    cursor: pointer;
+}
+
+#searchDropdown div:hover {
+    background-color: #eee;
 }
 
 .my-plants {
