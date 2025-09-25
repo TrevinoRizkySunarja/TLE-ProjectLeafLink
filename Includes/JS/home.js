@@ -1,4 +1,4 @@
-import {openMenu, closeMenu} from "./menu";
+// import {openMenu, closeMenu} from "./menu";
 
 document.addEventListener("click", (e) => clickHandler(e));
 window.addEventListener("load", loadPage);
@@ -14,7 +14,7 @@ function loadPage() {
 function clickHandler(e) {
     if (e.target.classList.contains("favoritePlant")) {
         openPopUp();
-    } else if (e.target.classList.contains(("close"))) {
+    } else if (e.target.classList.contains(("closeButton"))) {
         closePopUp();
     } else if (e.target.id === "navButton") {
         openMenu();
@@ -29,4 +29,14 @@ function openPopUp() {
 
 function closePopUp() {
     popup.style.display = 'none';
+}
+
+function openMenu() {
+    navList.classList.remove("close");
+    navList.classList.add("open");
+}
+
+function closeMenu() {
+    navList.classList.remove("open");
+    navList.classList.add("close");
 }
