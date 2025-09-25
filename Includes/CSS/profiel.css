@@ -70,8 +70,6 @@ header {
 }
 
 
-
-
 .manage-plants {
     display: flex;
     justify-content: space-around;
@@ -82,12 +80,15 @@ header {
     padding: 15px;
     text-decoration: none;
     color: black;
+    border: 2px solid black;
     border-radius: 20px;
     font-family: 'Fredoka', sans-serif;
     font-weight: bold;
-    padding-left: 40px;
-    padding-right: 40px;
+    padding: 15px 40px;
     position: relative;
+    width: 200px;
+    box-sizing: border-box;
+    text-align: center;
 }
 
 .search-wrapper {
@@ -96,8 +97,17 @@ header {
 }
 
 #zoekInvoer {
-    width: 100%;
-    padding: 10px;
+    background-color: #7da44d;       
+    color: black;                     
+    border: 2px solid black;                    
+    border-radius: 20px;              
+    padding: 15px 40px;               
+    font-family: 'Fredoka', sans-serif;
+    font-weight: bold;
+    padding: 15px 40px;
+    text-align: center;
+    width: 200px;
+    box-sizing: border-box;
 }
 
 #searchDropdown {

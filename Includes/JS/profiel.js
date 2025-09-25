@@ -12,4 +12,6 @@ input.addEventListener('input', async () => {
     const plants = await res.json();
 
     dropdown.innerHTML = plants.map(name => `<div>${name}</div>`).join('');
+
+    
 });
