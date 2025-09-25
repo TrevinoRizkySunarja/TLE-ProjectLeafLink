@@ -4,11 +4,17 @@ require_once 'includes/connectie.php';
 
 if (isset($_SESSION['user'])) {
     $username = $_SESSION['user']['username'];
+
 	$result = mysqli_query($db, "SELECT COUNT(*) as total FROM plants ");
-$row = mysqli_fetch_assoc($result);
-$plantCount = $row['total'];
+    $row = mysqli_fetch_assoc($result);
+    $plantCount = $row['total'];
+
+	$result = mysqli_query($db, "SELECT COUNT(*) as total FROM badges");
+    $row = mysqli_fetch_assoc($result);
+    $badgeCount = $row['total'];
 } else {
     $username = "username"; // tijdelijke naam
+	$plantCount = 0;   	
 }
 ?>
 
@@ -38,8 +44,9 @@ $plantCount = $row['total'];
         </div>
 </div>
 		<div class="pnb">
-        <h3><?= $plantCount . " " ?>Plants</h3>
-        <h3>Badges</h3>      
+        <h3><?= $plantCount . " "?>Plants</h3>
+        <!-- <h3><?= $badgeCount . " "?>Badges</h3>      -->
+		<h3>3 Badges</h3>    
 </div>
 </section>
 <section class="manage-plants">
