@@ -45,7 +45,7 @@ require_once 'Includes/login_check.php';
         <div id="plantInfo">
             <p>Zieke info over de plant epic!</p>
         </div>
-        <img class="close" src="Includes/images/close.png" alt="">
+        <img class="closeButton" src="Includes/images/close.png" alt="">
     </section>
     <section id="plantFacts"></section>
 </main>

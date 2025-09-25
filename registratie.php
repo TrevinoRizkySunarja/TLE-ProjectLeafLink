@@ -7,7 +7,7 @@ if (isset($_POST['submit'])) {
     $password = $_POST['password'];
     $email = $_POST['email'];
 
-    $errors = []; 
+    $errors = []; // Error handling
 
     if ($username == '') {
         $errors['username'] = 'Gebruikersnaam vereist.';
@@ -22,7 +22,8 @@ if (isset($_POST['submit'])) {
     if (empty($errors)) {
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-        // Use prepared statements to prevent SQL injection
+
+        // Inserts data into database
         $stmt = $db->prepare("INSERT INTO owners (username, password, email) VALUES (?, ?, ?)");
         if ($stmt) {
             $stmt->bind_param("sss", $username, $hashed_password, $email);
@@ -32,7 +33,7 @@ if (isset($_POST['submit'])) {
                 mysqli_close($db);
                 header('Location: login.php');
                 exit;
-            } catch (mysqli_sql_exception $exception) {
+            } catch (mysqli_sql_exception $exception) { // Error handling
                 if (strpos($exception->getMessage(), 'email') !== false) {
                     $errors['email'] = "Dit email adres is al in gebruik.";
                 } else {
@@ -61,21 +62,21 @@ if (isset($_POST['submit'])) {
                 <label for="username">Gebruikersnaam</label>
                 <input id="username" name="username" type="text" placeholder="Voer een gebruikersnaam in" value="">
                 <p class="help is-danger">
-                    <?= $errors[''] ?? '' ?>
+                    <?= $errors['general'] ?? '' ?>
                 </p>
             </div>
             <div>
                 <label for="password">Wachtwoord</label>
                 <input id="password" name="password" type="password" placeholder="Voer een wachtwoord in" value="">
                 <p class="help is-danger">
-                    <?= $errors[''] ?? '' ?>
+                    <?= $errors['general'] ?? '' ?>
                 </p>
             </div>
             <div>
                 <label for="email">Email-Adres</label>
                 <input id="email" name="email" type="text" placeholder="Voer een email-adres in" value="">
                 <p class="help is-danger">
-                    <?= $errors[''] ?? '' ?>
+                    <?= $errors['email'] ?? '' ?>
                 </p>
             </div>
             <div>
