@@ -71,25 +71,37 @@ if (isset($_POST['submit'])) {
     <script src="Includes/JS/login.js"></script> 
 </head>
 <body>
-    <?php include 'Includes/nav.php'; ?>
     <?php include 'Includes/hoofd.php'; ?>
+    
     <form action="" method="post">
         <div>
-            <label for="username">gebruikersnaam</label>
-            <input id="username" name="username" type="text" placeholder="Voer gebruikersnaam in" value="<?= htmlspecialchars($_POST['username'] ?? '') ?>">
-            <p class="help is-danger">
-                <?= $errors['username'] ?? '' ?>
-            </p>
+            <div>
+                <label for="username">Gebruikersnaam</label>
+            </div>
+            <div>
+                <input id="username" name="username" type="text" placeholder="Voer gebruikersnaam in" value="<?= htmlspecialchars($_POST['username'] ?? '') ?>">
+                <p class="help is-danger">
+                    <?= $errors['username'] ?? '' ?>
+                </p>
+            </div>
         </div>
         <div>
-            <label for="password">Wachtwoord</label>
-            <input id="password" name="password" type="password" placeholder="Voer wachtwoord in">
+            <div>
+                <label for="password">Wachtwoord</label>
+            </div>
+            <div>
+                <input id="password" name="password" type="password" placeholder="Voer wachtwoord in">
             <p class="help is-danger">
                 <?= $errors['password'] ?? '' ?>
             </p>
-        </div>
-        <div>
-            <button type="submit" name="submit">Login</button>
+            </div>
+        <div class="button-container">
+            <div>
+                <a href="./registratie.php" class="button-link">Registreer</a>
+            </div>
+            <div class="button-link">
+                <button type="submit" name="submit">Login</button>
+            </div>
         </div>
         <?php if (
             isset($_POST['submit']) && 
@@ -102,7 +114,5 @@ if (isset($_POST['submit'])) {
         </p>
         <?php endif; ?>
     </form>
-    <a href="./registratie.php">Registreer</a>
-
 </body>
 </html>
