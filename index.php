@@ -1,5 +1,36 @@
 <?php
+/** @var mysqli $db */
 require_once 'Includes/login_check.php';
+require_once 'Includes/connectie.php';
+
+$id = $_SESSION['user']['owner_id'];
+
+//badges uit database halen
+$queryBadges = "SELECT * FROM badges WHERE owner_id = $id ORDER BY date_earned LIMIT 3";
+$resultBadges = mysqli_query($db, $queryBadges)
+or die('Error ' . mysqli_error($db) . ' with query ' . $queryBadges);
+$badges = [];
+
+if (mysqli_num_rows($resultBadges) !== 0) {
+    while ($row = mysqli_fetch_assoc($resultBadges)) {
+        $badges[] = $row;
+    }
+} else {
+    $badges = "Geen badges gevonden";
+}
+
+//planten uit database halen
+$queryPlants = "SELECT * FROM plants WHERE owner_id = $id LIMIT 6";
+$resultPlants = mysqli_query($db, $queryPlants)
+or die('Error ' . mysqli_error($db) . ' with query ' . $queryPlants);
+$plants = [];
+
+if (mysqli_num_rows($resultPlants) !== 0) {
+    while ($row = mysqli_fetch_assoc($resultPlants)) {
+        $plants[] = $row;
+    }
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -22,19 +53,26 @@ require_once 'Includes/login_check.php';
             <h2>Recente badges</h2>
         </div>
         <div id="badges">
-            <!--linken naar de badgepage en de goeie badge laten zien-->
-            <a href=""><img src="Includes/images/firstplantBadge.png" alt=""></a>
-            <a href=""><img src="Includes/images/repotaplantBadge.png" alt=""></a>
-            <a href=""><img src="Includes/images/wateringBadge.png" alt=""></a>
+            <?php foreach ($badges as $index => $badge) { ?>
+                <!--linken naar de badgepage en de goeie badge laten zien-->
+                <a href=""><img src="Includes/images/firstplantBadge.png" alt=""></a>
+            <?php } ?>
         </div>
     </section>
     <section id="FavoritePlantsSec">
         <div class="shelf">
-            <img class="favoritePlant" src="Includes/images/cactus1.png" alt="">
-            <img class="favoritePlant" src="Includes/images/cactus2.png" alt="">
+            <?php foreach ($plants as $index => $plant) { ?>
+                <?php if ($index <= 2) { ?>
+                    <img id="<?= $plant['plant_id'] ?>" class="favoritePlant" src="Includes/images/cactus1.png" alt="">
+                <?php } ?>
+            <?php } ?>
         </div>
         <div class="shelf">
-            <img class="favoritePlant" src="Includes/images/monsterplant.png" alt="">
+            <?php foreach ($plants as $index => $plant) { ?>
+                <?php if ($index > 2) { ?>
+                    <img id="<?= $plant['plant_id'] ?>" class="favoritePlant" src="Includes/images/cactus1.png" alt="">
+                <?php } ?>
+            <?php } ?>
         </div>
     </section>
     <!--Popup voor info over de plant:-->
