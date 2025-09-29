@@ -1,3 +1,20 @@
+* {
+    /*Color palette*/
+    --color1: #7da44d;
+    --color2: #3e5e2a;
+    --color3: #fff4e3;
+    --color4: #9b7354;
+    --color5: #945e3c;
+    --color6: #737373;
+    --color7: #41535d;
+
+    /*new colors*/
+    --color8: #557430;
+    --color9: #9f8574;
+    --color10: #66462e;
+    --color11: #9c7355;
+}
+
 /*Pop up*/
 .popUp {
   display: none; /* Hidden by default */
@@ -35,4 +52,62 @@
   color: #000;
   text-decoration: none;
   cursor: pointer;
+}
+/*Id's*/
+#plantImg{
+  width: 100%;
+  height: 100%;
+  margin-top: 10%;
+}
+
+#windowDeco{
+  z-index: -1;
+  position: absolute;
+  width: 95%;
+  margin-left: -3%; /*hope i can have this be temporary*/
+}
+
+#tempAndAlarm{
+  /*move to right somehow*/
+  display: flex;
+  flex-direction: column;
+  min-width: 20%;
+  min-height: 120px;
+  margin-left: 75%;
+  margin-top: 10%;
+  position: absolute;
+
+}
+
+#tempAndAlarm span{
+  background-color: #000;
+  width: 50%;
+  height: 50%;
+  border-radius: 50%;
+  color: var(--color3);
+  text-align: center;
+  padding-left: 20%;
+  padding-right: 20%;
+  padding-top: 25%;
+  padding-bottom: 25%;
+  border: var(--color7) 3px solid;
+  font-size: 2rem;
+}
+
+#tempImg{
+  width: 100%;
+}
+
+#btnAlarmSet{
+  width: 100%;
+}
+
+#interaction{
+  height: 45%;
+  width: 100%;
+  background-color: var(--color10);
+  background-image: "./images/woodtexture.png";
+  border-radius: 18%;
+  position: absolute;
+  text-align: center;
 }
