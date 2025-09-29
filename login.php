@@ -1,7 +1,7 @@
 <?php
 /** @var mysqli $db */
 session_start();
-require_once 'includes/connectie.php';
+require_once 'Includes/connectie.php';
 
 $login = false;
 // Is admin logged in?

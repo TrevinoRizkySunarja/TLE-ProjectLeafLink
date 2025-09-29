@@ -16,8 +16,16 @@ require_once 'Includes/login_check.php';
     <?php include 'Includes/nav.php'; ?>
     <?php include 'Includes/hoofd.php'; ?>
     <main>
-        <div class="zoek-balk">
-            <input type="text" id="zoekInvoer" placeholder="Zoek planten...">
+        <div class="filter-balk">
+            <select>
+                <option>Licht</option>
+            </select>
+            <select>
+                <option>Water</option>
+            </select>
+            <select>
+                <option>Ruimte</option>
+            </select>
         </div>
         <section id="plantenLijst" class="planten-lijst>">
             <!-- Planten worden hier dynamisch geladen -->

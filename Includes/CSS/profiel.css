@@ -1,19 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Alan+Sans:wght@300..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka&display=swap');
+
+@font-face {
+    font-family: Lazytype;
+    src: url("../fonts/Lazytype-1jz0Z.ttf");
+}
+
 * {
     margin: 0;
 
 }
 
 body {
+    background: var(--color3);
     background-image: url("../images/tiles.png");
-    background-size: cover;
+    background-repeat: repeat-y;
     background-position: center;
+    background-attachment: fixed;
+    background-size: 125%;
+    overflow: hidden; /* Hide scrollbars */
 }
 
 header {
-    background-color: #7da44d;
+    background: var(--color1);
+    padding: 2vh 0;
     text-align: center;
-    height: 200px;
-    
+    border-bottom: 5px solid #ABCFAE;
 }
 
 .avatar-container {
@@ -25,11 +37,18 @@ header {
 }
 
 .avatar-container img {
-    width: 120px;       /* vaste breedte */
-    height: 120px;      /* vaste hoogte */
+    width: 120px;       
+    height: 120px;      
     max-width: 100%; 
     object-fit: cover;
     margin-bottom: 5px
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
 }
 
 .profile-username {
@@ -44,28 +63,110 @@ header {
 
 .pnb {
     display: flex;
+    font-family: 'Fredoka', sans-serif;
+    gap: 10px;
+    width: 100%;
     justify-content: space-around;
-    gap: 60px; 
-    
 }
 
 
 .manage-plants {
     display: flex;
-    justify-content: space-evenly;
-    border: black; 
+    justify-content: space-around;
 }
 
 .manage-plants a {
     background-color: #7da44d;
     padding: 15px;
+    text-decoration: none;
+    color: black;
+    border: 2px solid black;
+    border-radius: 20px;
+    font-family: 'Fredoka', sans-serif;
+    font-weight: bold;
+    padding: 15px 40px;
+    position: relative;
+    width: 200px;
+    box-sizing: border-box;
+    text-align: center;
 }
 
+.search-wrapper {
+    position: relative;
+    width: 200px; /* even breed als input of zoals je wilt */
+}
 
+#zoekInvoer {
+    background-color: #7da44d;       
+    color: black;                     
+    border: 2px solid black;                    
+    border-radius: 20px;              
+    padding: 15px 40px;               
+    font-family: 'Fredoka', sans-serif;
+    font-weight: bold;
+    padding: 15px 40px;
+    text-align: center;
+    width: 200px;
+    box-sizing: border-box;
+}
 
-.profile-info {
+#searchDropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    border: 1px solid #ccc;
+    background: white;
+    max-height: 150px;
+    overflow-y: auto;
+    z-index: 100;
+}
+
+#searchDropdown div {
+    padding: 5px;
+    cursor: pointer;
+}
+
+#searchDropdown div:hover {
+    background-color: #eee;
+}
+
+.my-plants {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 20px;
+    margin-top: 40px;
+
 }
+
+.board {
+    text-align: center;
+    padding: 2vh;
+    background-image: url("../images/noteplank.png");
+    background-size: 100%;
+    margin-top: 40px;
+       
+}
+
+.shelf {
+    background-image: url("../images/shelf.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    min-height: 120px;  /* geef ze ruimte zodat je ze ziet */
+    width: 80%;
+    margin-top: 30px;
+    display: flex;
+    
+}
+
+
+
+
+
+
+
+
+
+
+
