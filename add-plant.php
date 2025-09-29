@@ -56,16 +56,19 @@ $popupJs = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name = trim($_POST['name'] ?? '');
     $info = trim($_POST['info'] ?? '');
+    $soort = trim($_POST['soort'] ?? '');
+    $watering = trim($_POST['watering'] ?? '');
+    $sunlight = trim($_POST['sunlight'] ?? '');
 
     if ($name === '' || $info === '') {
         $messageHtml = "<div class='message error'>⚠️ Vul zowel een naam als een beschrijving in.</div>";
         $popupJs = "<script>alert('Vul zowel een naam als een beschrijving in.');</script>";
     } else {
         // Basis: alleen name + info vanuit formulier
-        $cols = ['name', 'info'];
-        $placeholders = ['?', '?'];
-        $types = 'ss';
-        $values = [$name, $info];
+        $cols = ['name', 'info', 'species', 'water_frequency', 'sunlight'];
+        $placeholders = ['?', '?', '?', '?', '?'];
+        $types = 'sssss';
+        $values = [$name, $info, $soort, $watering, $sunlight];
 
         // Haal verplichte kolommen zonder default op en vul veilige standaardwaarden in
         $required = required_columns_without_default($mysqli, $TABLE);
@@ -148,6 +151,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>LeafLink - Plant toevoegen</title>
     <link rel="stylesheet" href="Includes/CSS/add-plant.css">
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <script src="Includes/JS/add-plant.js" defer></script>
     <style>
         .redirect-wrap { margin:1rem 0; }
         .redirect-wrap .msg { text-align:center; font-weight:bold; margin-bottom:.5rem; }
@@ -166,6 +170,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <form method="POST" action="add-plant.php" novalidate>
         <label for="name">Naam van de plant:</label>
         <input type="text" id="name" name="name" required>
+
+        <label for="soort">Soort Plant:</label>
+        <select id="soort" name="soort" required>
+            <option value="">Selecteer Soort</option>
+            <option value="cactus1">Bloeiende Cactus</option>
+            <option value="cactus2">Cactus</option>
+            <option value="fatpant">Vetplant</option>
+            <option value="floweredplant">Bloemen</option>
+        </select>
+
+        <label for="watering">Water behoeften:</label>
+        <select id="watering" name="watering" required>
+            <option value="">Selecteer water behoeften</option>
+            <option value="frequent">Frequent</option>
+            <option value="average">Gemiddeld</option>
+            <option value="minimum">Minimaal</option>
+            <option value="none">Geen</option>
+        </select>
+
+        <label for="sunlight">Lichtbehoeften:</label>
+        <select id="sunlight" name="sunlight" required>
+            <option value="">Selecteer lichtbehoeften</option>
+            <option value="full_sun">Vol zonlicht</option>
+            <option value="part_shade">Halfschaduw</option>
+            <option value="full_shade">Volledige schaduw</option>
+            <option value="part_sun">Deels zonlicht</option>
+        </select>
 
         <label for="info">Beschrijving:</label>
         <textarea id="info" name="info" rows="4" required></textarea>

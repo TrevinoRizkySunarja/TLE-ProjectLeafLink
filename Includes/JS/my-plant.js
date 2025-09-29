@@ -1,8 +1,10 @@
 document.getElementById("waterPlant").addEventListener("click", waterPlant);
+document.getElementById("btnAlarmSet").addEventListener("click", selectAlarms);
+
 window.onload = function(){
     //set up water timer
     goodState = false;
-    countDownTime = 10;
+    countDownTime = 100;
     runWaterTimer();
     initiate(); //to load in all other variables
 };
@@ -73,22 +75,22 @@ function showNotification(notifyType) { //show notification
   popup.style.display = "block";
   switch (notifyType) {
     case 1:
-        TextForPopup = "Tekst voor water geven";
+        TextForPopup.innerText = "Tekst voor water geven";
     break;
     case 2:
-        TextForPopup = "Tekst om pot te veranderen";
+        TextForPopup.innerText = "Tekst om pot te veranderen";
     break;
     case 3:
-        TextForPopup = "Tekst bemesten";
+        TextForPopup.innerText = "Tekst bemesten";
     break;
     case 4:
-        TextForPopup = "Tekst kortwieken plant";
+        TextForPopup.innerText = "Tekst kortwieken plant";
     break;
     case 5:
-        TextForPopup = "Tekst over licht"; //might wanna give more specific reason
+        TextForPopup.innerText = "Tekst over licht"; //might wanna give more specific reason
     break;
     case 6:
-        TextForPopup = "Bekijk status van je plant";
+        TextForPopup.innerText = "Bekijk status van je plant";
     break;
   }
 }
@@ -101,8 +103,16 @@ function showNotification(notifyType) { //show notification
 
 
 /*alarm system*/
-//event listener 
-// 1. if alarm clock pressed then add event listeners to other buttons
+function selectAlarms(){
+  alert("choose alarms");
+  // document.getElementById("waterPlant").addEventListener("click", waterPlant);
+  document.getElementById("btncChangePot").addEventListener("click", function(){alert("change pot alert on")});
+  document.getElementById("btnFertalizePlant").addEventListener("click", function(){alert("fertalize alert on")});
+  document.getElementById("btnTrimPlant").addEventListener("click", function(){alert("trim plant on")});
+  document.getElementById("btnChangeLight").addEventListener("click", function(){alert("light change on")});
+
+}
+// 1. if alarm clock pressed then change look of 'info element' and then add event listeners to other buttons
 // 2. add pop up to communicate to user that they are in 'chose alarms' mode
 //if active and pressed again then change eventlisteners back to what they were (or delete and reapply by just running an external function to prevent a huge mess)
 

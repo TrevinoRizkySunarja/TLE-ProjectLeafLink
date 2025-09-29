@@ -113,3 +113,13 @@ main {
     width: calc(100% - 32px);
     margin: 0 16px;
 }
+
+.add-plant-button {
+    background: var(--color1);
+    border-radius: 100%;
+    border: 2px solid var(--color2);
+    width: 64px;
+    height: 64px;
+    position: fixed;
+    bottom: 32px;
+}

@@ -29,6 +29,7 @@ require_once 'Includes/login_check.php';
             <p id="description"></p>
             <!-- Extra details worden hier toegevoegd -->
         </section>
+        <div id="voegPlantToe" class="add-plant-button"></div>
     </main>
 </body>
 </html>

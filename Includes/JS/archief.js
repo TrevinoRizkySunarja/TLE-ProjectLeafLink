@@ -1,14 +1,17 @@
 window.addEventListener("load", init)
 
 let page = 1;
-let filter = "none";
+let currentFilters = "";
 
 function init() {
     localStorage.removeItem('selectedPlant');
     loadData("https://perenual.com/api/v2/species-list?key=sk-wuwj68d12c997cb4012512&page=" + page, showData);
     loadHeaderTitle()
 
-    document.getElementById("laadMeerKnop").addEventListener("click", () => loadNextPage(filter));
+    document.getElementById("laadMeerKnop").addEventListener("click", loadNextPage);
+    document.getElementById("lichtFilter").addEventListener("change", applyFilters);
+    document.getElementById("waterFilter").addEventListener("change", applyFilters);
+    document.getElementById("overigeFilter").addEventListener("change", applyFilters);
 }
 
 function loadData(url, successHandler) {
@@ -57,11 +60,24 @@ function showData(data) {
     })
 }
 
-function loadNextPage(filterValue) {
-    if (filterValue === "none") {
-        page++;
-        loadData("https://perenual.com/api/v2/species-list?key=sk-wuwj68d12c997cb4012512&page=" + page, showData)
-    }
+function loadNextPage() {
+    page ++;
+    let url = "https://perenual.com/api/v2/species-list?key=sk-wuwj68d12c997cb4012512&page=" + page + currentFilters;
+    loadData(url, showData);
+}
+
+function applyFilters() {
+    let lichtValue = document.getElementById("lichtFilter").value;
+    let waterValue = document.getElementById("waterFilter").value;
+    let overigeValue = document.getElementById("overigeFilter").value;
+
+    currentFilters = lichtValue + waterValue + overigeValue;
+    console.log(currentFilters)
+    page = 1;
+    document.getElementById("plantenLijst").innerHTML = "";
+
+    let url = "https://perenual.com/api/v2/species-list?key=sk-wuwj68d12c997cb4012512&page=" + page + currentFilters;
+    loadData(url, showData);
 }
 
 function loadHeaderTitle() {
