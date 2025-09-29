@@ -1,5 +1,6 @@
 <?php
 declare(strict_types=1);
+require_once 'Includes/login_check.php';
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
 
@@ -54,6 +55,7 @@ $redirectHtml = '';
 $popupJs = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $owner_id = $_SESSION['user']['owner_id'] ?? 0;
     $name = trim($_POST['name'] ?? '');
     $info = trim($_POST['info'] ?? '');
     $soort = trim($_POST['soort'] ?? '');
@@ -65,10 +67,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $popupJs = "<script>alert('Vul zowel een naam als een beschrijving in.');</script>";
     } else {
         // Basis: alleen name + info vanuit formulier
-        $cols = ['name', 'info', 'species', 'water_frequency', 'sunlight'];
-        $placeholders = ['?', '?', '?', '?', '?'];
-        $types = 'sssss';
-        $values = [$name, $info, $soort, $watering, $sunlight];
+        $cols = ['name', 'info', 'species', 'water_frequency', 'sunlight', 'owner_id'];
+        $placeholders = ['?', '?', '?', '?', '?', '?'];
+        $types = 'sssssi';
+        $values = [$name, $info, $soort, $watering, $sunlight, $owner_id];
 
         // Haal verplichte kolommen zonder default op en vul veilige standaardwaarden in
         $required = required_columns_without_default($mysqli, $TABLE);
