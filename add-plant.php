@@ -56,16 +56,19 @@ $popupJs = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name = trim($_POST['name'] ?? '');
     $info = trim($_POST['info'] ?? '');
+    $soort = trim($_POST['soort'] ?? '');
+    $watering = trim($_POST['watering'] ?? '');
+    $sunlight = trim($_POST['sunlight'] ?? '');
 
     if ($name === '' || $info === '') {
         $messageHtml = "<div class='message error'>⚠️ Vul zowel een naam als een beschrijving in.</div>";
         $popupJs = "<script>alert('Vul zowel een naam als een beschrijving in.');</script>";
     } else {
         // Basis: alleen name + info vanuit formulier
-        $cols = ['name', 'info'];
-        $placeholders = ['?', '?'];
-        $types = 'ss';
-        $values = [$name, $info];
+        $cols = ['name', 'info', 'species', 'water_frequency', 'sunlight'];
+        $placeholders = ['?', '?', '?', '?', '?'];
+        $types = 'sssss';
+        $values = [$name, $info, $soort, $watering, $sunlight];
 
         // Haal verplichte kolommen zonder default op en vul veilige standaardwaarden in
         $required = required_columns_without_default($mysqli, $TABLE);
