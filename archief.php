@@ -17,14 +17,25 @@ require_once 'Includes/login_check.php';
     <?php include 'Includes/hoofd.php'; ?>
     <main>
         <div class="filter-balk">
-            <select>
-                <option>Licht</option>
+            <select id="lichtFilter" name="lichtFilter">
+                <option value="">Licht</option>
+                <option value="&sunlight=full_shade">Volledig in Schaduw</option>
+                <option value="&sunlight=part_shade">Gedeeltelijk in Schadow</option>
+                <option value="&sunlight=sun-part_shade">Zon en Schaduw</option>
+                <option value="&sunlight=full_sun">Volle Zon</option>
             </select>
-            <select>
-                <option>Water</option>
+            <select id="waterFilter" name="waterFilter">
+                <option value="">Water</option>
+                <option value="&watering=frequent">Frequent</option>
+                <option value="&watering=average">Normaal</option>
+                <option value="&watering=minimum">Minimaal</option>
+                <option value="&watering=none">Geen</option>
             </select>
-            <select>
-                <option>Ruimte</option>
+            <select id="overigeFilter" name="overigeFilter">
+                <option value="">Overige</option>
+                <option value="&poisonous=0">Niet Giftig</option>
+                <option value="&indoor=1">Binnenplant</option>
+                <option value="&indoor=0">Buitenplant</option>
             </select>
         </div>
         <section id="plantenLijst" class="planten-lijst>">
