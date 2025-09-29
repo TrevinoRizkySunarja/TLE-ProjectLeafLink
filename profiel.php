@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once 'includes/connectie.php';
+require_once 'Includes/connectie.php';
 
 if (isset($_SESSION['user'])) {
     $username = $_SESSION['user']['username'];
