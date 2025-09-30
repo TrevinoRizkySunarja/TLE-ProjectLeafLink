@@ -58,34 +58,49 @@ if (isset($_POST['submit'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Includes/CSS/style.css">
+    <link rel="stylesheet" href="Includes/CSS/login.css">
     <title>Registratie</title>
+    <script src="Includes/JS/registratie.js"></script> 
 </head>
 <body>
+    <?php include 'Includes/hoofd.php'; ?>
     <main>
-        <h1>Registreer Hier</h1>
         <form method="post">
             <div>
-                <label for="username">Gebruikersnaam</label>
-                <input id="username" name="username" type="text" placeholder="Voer een gebruikersnaam in" value="">
-                <p class="help is-danger">
-                    <?= $errors['general'] ?? '' ?>
-                </p>
+                <div>
+                    <label for="username">Gebruikersnaam</label>
+                </div>
+                <div>
+                    <input id="username" name="username" type="text" placeholder="Voer een gebruikersnaam in" value="">
+                    <p class="help is-danger">
+                        <?= $errors['general'] ?? '' ?>
+                    </p>
+                </div>
             </div>
             <div>
-                <label for="password">Wachtwoord</label>
-                <input id="password" name="password" type="password" placeholder="Voer een wachtwoord in" value="">
-                <p class="help is-danger">
-                    <?= $errors['general'] ?? '' ?>
-                </p>
+                <div>
+                    <label for="password">Wachtwoord</label>
+                </div>
+                <div>
+                    <input id="password" name="password" type="password" placeholder="Voer een wachtwoord in" value="">
+                    <p class="help is-danger">
+                        <?= $errors['general'] ?? '' ?>
+                    </p>
+                </div>
             </div>
             <div>
-                <label for="email">Email-Adres</label>
-                <input id="email" name="email" type="text" placeholder="Voer een email-adres in" value="">
-                <p class="help is-danger">
-                    <?= $errors['email'] ?? '' ?>
-                </p>
+                <div>
+                    <label for="email">Email-Adres</label>
+                </div>
+                <div>
+                    <input id="email" name="email" type="text" placeholder="Voer een email-adres in" value="">
+                    <p class="help is-danger">
+                        <?= $errors['email'] ?? '' ?>
+                    </p>
+                </div>
             </div>
-            <div>
+            <div class="button-link">
                 <button type="submit" name="submit">Registreer</button>
             </div>
         </form>

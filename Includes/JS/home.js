@@ -10,9 +10,7 @@ function loadPage() {
 }
 
 function clickHandler(e) {
-    if (e.target.classList.contains("favoritePlant")) {
-        openPopUp();
-    } else if (e.target.classList.contains(("closeButton"))) {
+    if (e.target.classList.contains(("closeButton"))) {
         closePopUp();
     } else if (e.target.id === "navButton") {
         openMenu();
@@ -21,12 +19,12 @@ function clickHandler(e) {
     }
 }
 
-function openPopUp() {
-    popup.style.display = 'block';
-}
-
+// function openPopUp() {
+//     popup.style.display = 'block';
+// }
+//
 function closePopUp() {
-    popup.style.display = 'none';
+    window.location.href = "index.php";
 }
 
 function openMenu() {

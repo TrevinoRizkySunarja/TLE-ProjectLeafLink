@@ -1,12 +1,13 @@
 <?php
+/** @var mysqli $db */
 session_start();
 require_once 'includes/connectie.php';
 
 if (isset($_SESSION['user'])) {
     $username = $_SESSION['user']['username'];
-    $userId = $_SESSION['user']['userId'];
+    $userId = $_SESSION['user']['owner_id'];
 
-    $result = mysqli_query($db, "SELECT COUNT(*) as total FROM plants WHERE owner = '$userId' ");
+    $result = mysqli_query($db, "SELECT COUNT(*) as total FROM plants WHERE owner_id = '$userId' ");
     $row = mysqli_fetch_assoc($result);
     $plantCount = $row['total'];
 
@@ -15,7 +16,10 @@ if (isset($_SESSION['user'])) {
     $badgeCount = $row['total'];
 } else {
     $username = "username"; // tijdelijke naam
-    $plantCount = 0;
+    $userId = 0;            // zodat er geen error komt
+    $plantCount = 0;        // default waarde
+    $badgeCount = 0;
+
 }
 
 if (isset($_GET['search'])) {
@@ -45,8 +49,10 @@ if (isset($_GET['search'])) {
 <body>
 <?php include 'Includes/nav.php'; ?>
 
+
 <header>
     <h1>Profiel</h1>
+
 
 </header>
 

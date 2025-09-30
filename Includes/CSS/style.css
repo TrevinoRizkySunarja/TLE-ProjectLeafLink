@@ -6,8 +6,8 @@
     src: url("../fonts/Lazytype-1jz0Z.ttf");
 }
 
-* {
-    /*Color palette*/
+/* ---------------- Vars ---------------- */
+:root {
     --color1: #7da44d;
     --color2: #3e5e2a;
     --color3: #fff4e3;
@@ -15,8 +15,33 @@
     --color5: #945e3c;
     --color6: #737373;
     --color7: #41535d;
+
+    --header-h: 88px; /* vaste headerhoogte site-breed */
+    --gap: 24px;
+    --tiles-size: 125%;
 }
 
+/* ---------------- Base ---------------- */
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    background: var(--color3);
+    background-image: url("../images/tiles.png");
+    background-repeat: repeat-y;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: var(--tiles-size);
+    margin: 0;
+    color: black;
+}
+
+/* Headings */
 h1 {
     font-family: "Fredoka", sans-serif;
     font-size: 2.5rem;
@@ -34,26 +59,72 @@ h4 {
     font-weight: normal;
 }
 
-nav {
-    width: 11vw;
+/* ---------------- Header (fixed) ---------------- */
+/*header {*/
+/*    position: fixed;*/
+/*    top: 0;*/
+/*    left: 0;*/
+/*    right: 0;*/
+/*    height: var(--header-h);*/
+/*    z-index: 1000;*/
+/*    background: var(--color1);*/
+/*    padding: 0 var(--gap);*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    justify-content: center; !* of space-between als je links/rechts items hebt *!*/
+/*    text-align: center;*/
+/*    border-bottom: 5px solid #ABCFAE;*/
+/*    box-shadow: 0 6px 18px rgba(0, 0, 0, .12);*/
+/*}*/
+
+header {
+    background: var(--color1);
+    padding: 2vh 0;
+    text-align: center;
+    border-bottom: 5px solid #ABCFAE;
+    /*box-shadow: 0 15px 10px 1px;*/
+}
+
+header a {
     position: absolute;
-    top: 20px;
-    left: 15px;
-    z-index: 999;
-    min-height: 100vh;
+    right: 1.5vw;
+    top: 1.5vh;
+    height: 7vh;
+}
+
+header a img {
+    height: 100%;
+}
+
+header a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* ---------------- Nav (hamburger in header) ---------------- */
+nav{
+    z-index: 1001;
+    position: absolute;
+    left: 3vw;
+    top: 1.5vh;
+
+
 }
 
 nav img {
-    width: 100%;
+    /*display: block;*/
+    height: 6vh; /* hamburger-grootte */
 }
 
-#navList {
-    width: 50vw;
-    padding: 5vh 1vw;
-    background: var(--color2);
+/* Slide-out menu onder de header */
+#navList{
     position: fixed;
     top: 0;
     left: 0;
+    width: 50vw;
+    padding: 5vh 1vw;
+    background: var(--color2);
     text-align: center;
     flex-direction: column;
     gap: 4vh;
@@ -73,39 +144,50 @@ nav a {
     display: none;
 }
 
-body {
-    background: var(--color3);
-    background-image: url("../images/tiles.png");
-    background-repeat: repeat-y;
-    background-position: center;
-    background-attachment: fixed;
-    background-size: 125%;
-}
+/* ---------------- Page content offset ---------------- */
+/*main {*/
+/*    padding-top: calc(var(--header-h) + var(--gap));*/
+/*    padding-left: 16px;*/
+/*    padding-right: 16px;*/
+/*}*/
 
-header {
-    background: var(--color1);
-    padding: 2vh 0;
-    text-align: center;
-    border-bottom: 5px solid #ABCFAE;
-    /*box-shadow: 0 15px 10px 1px;*/
-}
+/* ---------------- Responsive ---------------- */
+/*@media (max-width: 900px) {*/
+/*    #navList {*/
+/*        width: 60vw;*/
+/*    }*/
+/*}*/
 
-header a {
-    position: absolute;
-    right: 1.5vw;
-    top: 1.5vh;
-    width: 15vw;
-}
+/*@media (max-width: 768px) {*/
+/*    nav img {*/
+/*        width: 56px;*/
+/*    }*/
 
-header a img {
-    width: 100%;
-}
+/*    header > img,*/
+/*    header > svg,*/
+/*    header > picture {*/
+/*        height: 56px;*/
+/*    }*/
+/*}*/
 
+/*@media (max-width: 480px) {*/
+/*    header {*/
+/*        gap: 8px;*/
+/*    }*/
 
-@media only screen and (max-width: 412px) {
-    /*Need to do more research into other common screen sizes so it won't break*/
-    /*ID's*/
-    /*classes*/
+/*    nav img {*/
+/*        width: 48px;*/
+/*    }*/
 
+/*    header > img,*/
+/*    header > svg,*/
+/*    header > picture {*/
+/*        height: 48px;*/
+/*    }*/
+/*}*/
 
-}
+/* --------- Verwijderd/voorkomen (conflicterend uit oude style.css) ----------
+   - GEEN tweede 'header { ... }' blok met andere padding/positionering
+   - GEEN 'header a { position:absolute; right:... }' (veroorzaakte overlap)
+   - GEEN 'nav { position:absolute; top:20px; }' (verschoof uit de header)
+--------------------------------------------------------------------------- */

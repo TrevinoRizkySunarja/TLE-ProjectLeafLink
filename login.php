@@ -96,8 +96,8 @@ if (isset($_POST['submit'])) {
             </div>
         </div>
         <div class="button-container">
-            <div>
-                <a href="./registratie.php" class="button-link">Registreer</a>
+            <div class="button-link">
+                <button type="button" onclick="window.location.href='registratie.php'">Registratie</button>
             </div>
             <div class="button-link">
                 <button type="submit" name="submit">Login</button>
@@ -118,7 +118,10 @@ if (isset($_POST['submit'])) {
         <div class="books"></div>
         <div class="shelf"></div>
         <div class="cat"></div>
+    </div>
+    <div id="tile-container">
         <div class="tiles"></div>
+        <div class="bottom-plants"></div>
     </div>
 </body>
 </html>

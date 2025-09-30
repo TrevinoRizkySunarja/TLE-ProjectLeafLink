@@ -6,29 +6,42 @@ ini_set('display_errors', '1');
 
 /* --- connectie.php inladen --- */
 $possibleConnectPaths = [
-    __DIR__ . '/connectie.php',
-    __DIR__ . '/includes/connectie.php',
-    __DIR__ . '/Includes/connectie.php',
-    dirname(__DIR__) . '/connectie.php',
-    dirname(__DIR__) . '/includes/connectie.php',
-    dirname(__DIR__) . '/Includes/connectie.php',
+        __DIR__ . '/connectie.php',
+        __DIR__ . '/includes/connectie.php',
+        __DIR__ . '/Includes/connectie.php',
+        dirname(__DIR__) . '/connectie.php',
+        dirname(__DIR__) . '/includes/connectie.php',
+        dirname(__DIR__) . '/Includes/connectie.php',
 ];
 $loaded = false;
 foreach ($possibleConnectPaths as $p) {
-    if (is_file($p)) { require_once $p; $loaded = true; break; }
+    if (is_file($p)) {
+        require_once $p;
+        $loaded = true;
+        break;
+    }
 }
-if (!$loaded) { http_response_code(500); echo "Kan connectie.php niet vinden."; exit; }
+if (!$loaded) {
+    http_response_code(500);
+    echo "Kan connectie.php niet vinden.";
+    exit;
+}
 
 /* Ondersteun $db of $conn uit connectie.php */
 $mysqli = null;
-if (isset($db) && $db instanceof mysqli)      $mysqli = $db;
+if (isset($db) && $db instanceof mysqli) $mysqli = $db;
 elseif (isset($conn) && $conn instanceof mysqli) $mysqli = $conn;
-if (!$mysqli) { http_response_code(500); echo "DB connectie niet beschikbaar."; exit; }
+if (!$mysqli) {
+    http_response_code(500);
+    echo "DB connectie niet beschikbaar.";
+    exit;
+}
 
 $TABLE = 'plants';
 
 /* Helper: lijst van verplichte kolommen zonder default (excl. auto_increment) */
-function required_columns_without_default(mysqli $m, string $table): array {
+function required_columns_without_default(mysqli $m, string $table): array
+{
     $sql = "SELECT COLUMN_NAME, DATA_TYPE, EXTRA
             FROM INFORMATION_SCHEMA.COLUMNS
             WHERE TABLE_SCHEMA = DATABASE()
@@ -83,19 +96,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $dtype = $col['type'];
             // Bepaal veilige default op basis van type
             switch ($dtype) {
-                case 'int': case 'bigint': case 'smallint': case 'tinyint':
-                case 'decimal': case 'float': case 'double':
-                case 'real': case 'numeric':
-                $def = 0;  $types .= 'd'; break;
+                case 'int':
+                case 'bigint':
+                case 'smallint':
+                case 'tinyint':
+                case 'decimal':
+                case 'float':
+                case 'double':
+                case 'real':
+                case 'numeric':
+                    $def = 0;
+                    $types .= 'd';
+                    break;
 
                 case 'date':
-                    $def = date('Y-m-d'); $types .= 's'; break;
+                    $def = date('Y-m-d');
+                    $types .= 's';
+                    break;
 
-                case 'datetime': case 'timestamp':
-                $def = date('Y-m-d H:i:s'); $types .= 's'; break;
+                case 'datetime':
+                case 'timestamp':
+                    $def = date('Y-m-d H:i:s');
+                    $types .= 's';
+                    break;
 
                 default: // varchar, char, text, json, etc.
-                    $def = ''; $types .= 's';
+                    $def = '';
+                    $types .= 's';
             }
             $cols[] = $cname;
             $placeholders[] = '?';
@@ -136,7 +163,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                   </script>";
             } else {
                 $messageHtml = "<div class='message error'>❌ Fout bij toevoegen: " . htmlspecialchars($stmt->error) . "</div>";
-                $popupJs = "<script>alert('Fout bij toevoegen: ".addslashes($stmt->error)."');</script>";
+                $popupJs = "<script>alert('Fout bij toevoegen: " . addslashes($stmt->error) . "');</script>";
             }
             $stmt->close();
         } else {
@@ -149,72 +176,89 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8"/>
     <title>LeafLink - Plant toevoegen</title>
     <link rel="stylesheet" href="Includes/CSS/style.css">
     <link rel="stylesheet" href="Includes/CSS/add-plant.css">
     <script src="Includes/JS/add-plant.js" defer></script>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <style>
-        .redirect-wrap { margin:1rem 0; }
-        .redirect-wrap .msg { text-align:center; font-weight:bold; margin-bottom:.5rem; }
-        .redirect-wrap .bar { height:8px; background:#eee; border-radius:6px; overflow:hidden; }
-        #barFill { height:100%; width:0; background:var(--color1,#7da44d); transition: width .05s linear; }
+        .redirect-wrap {
+            margin: 1rem 0;
+        }
+
+        .redirect-wrap .msg {
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: .5rem;
+        }
+
+        .redirect-wrap .bar {
+            height: 8px;
+            background: #eee;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        #barFill {
+            height: 100%;
+            width: 0;
+            background: var(--color1, #7da44d);
+            transition: width .05s linear;
+        }
     </style>
 </head>
 <body class="page-add-plant">
-<header>
-    <?php include 'Includes/nav.php'; ?>
-    <h1 id="headerH1">Home</h1>
-</header>
+<?php include 'Includes/nav.php'; ?>
+<?php include 'Includes/hoofd.php'; ?>
 <main class="form-page">
-<div class="form-container">
-    <h1>Nieuwe plant toevoegen</h1>
-    <?php
-    if ($messageHtml) echo $messageHtml;
-    if ($redirectHtml) echo $redirectHtml;
-    if ($popupJs) echo $popupJs;
-    ?>
-    <form method="POST" action="add-plant.php" novalidate>
-        <label for="name">Naam van de plant:</label>
-        <input type="text" id="name" name="name" required>
+    <div class="form-container">
+        <h1>Nieuwe plant toevoegen</h1>
+        <?php
+        if ($messageHtml) echo $messageHtml;
+        if ($redirectHtml) echo $redirectHtml;
+        if ($popupJs) echo $popupJs;
+        ?>
+        <form method="POST" action="add-plant.php" novalidate>
+            <label for="name">Naam van de plant:</label>
+            <input type="text" id="name" name="name" required>
 
-        <label for="soort">Soort Plant:</label>
-        <select id="soort" name="soort" required>
-            <option value="">Selecteer Soort</option>
-            <option value="cactus1">Bloeiende Cactus</option>
-            <option value="cactus2">Cactus</option>
-            <option value="fatpant">Vetplant</option>
-            <option value="floweredplant">Bloemen</option>
-        </select>
+            <label for="soort">Soort Plant:</label>
+            <select id="soort" name="soort" required>
+                <option value="">Selecteer Soort</option>
+                <option value="cactus1">Bloeiende Cactus</option>
+                <option value="cactus2">Cactus</option>
+                <option value="fatplant">Vetplant</option>
+                <option value="floweredplant">Bloemen</option>
+            </select>
 
-        <label for="watering">Water behoeften:</label>
-        <select id="watering" name="watering" required>
-            <option value="">Selecteer water behoeften</option>
-            <option value="frequent">Frequent</option>
-            <option value="average">Gemiddeld</option>
-            <option value="minimum">Minimaal</option>
-            <option value="none">Geen</option>
-        </select>
+            <label for="watering">Water behoeften:</label>
+            <select id="watering" name="watering" required>
+                <option value="">Selecteer water behoeften</option>
+                <option value="Frequent">Frequent</option>
+                <option value="Gemiddeld">Gemiddeld</option>
+                <option value="Minimaal">Minimaal</option>
+                <option value="Geen">Geen</option>
+            </select>
 
-        <label for="sunlight">Lichtbehoeften:</label>
-        <select id="sunlight" name="sunlight" required>
-            <option value="">Selecteer lichtbehoeften</option>
-            <option value="full_sun">Vol zonlicht</option>
-            <option value="part_shade">Halfschaduw</option>
-            <option value="full_shade">Volledige schaduw</option>
-            <option value="part_sun">Deels zonlicht</option>
-        </select>
+            <label for="sunlight">Lichtbehoeften:</label>
+            <select id="sunlight" name="sunlight" required>
+                <option value="">Selecteer lichtbehoeften</option>
+                <option value="Volle zonlicht">Vol zonlicht</option>
+                <option value="Halfschaduw">Halfschaduw</option>
+                <option value="Volledige schaduw">Volledige schaduw</option>
+                <option value="Deels zonlicht">Deels zonlicht</option>
+            </select>
 
-        <label for="info">Beschrijving:</label>
-        <textarea id="info" name="info" rows="4" required></textarea>
+            <label for="info">Beschrijving:</label>
+            <textarea id="info" name="info" rows="4" required></textarea>
 
-        <button type="submit">Toevoegen</button>
-    </form>
-    <div style="text-align:center;margin-top:1rem;">
-        <a href="index.php">← Terug naar overzicht</a>
+            <button type="submit">Toevoegen</button>
+        </form>
+        <div style="text-align:center;margin-top:1rem;">
+            <a href="index.php">← Terug naar overzicht</a>
+        </div>
     </div>
-</div>
 </main>
 </body>
 </html>

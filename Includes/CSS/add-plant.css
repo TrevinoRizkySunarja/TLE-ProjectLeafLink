@@ -12,42 +12,42 @@
     src: url("../fonts/Lazytype-1jz0Z.ttf");
 }
 
-/* ---------- Variabelen ---------- */
-:root{
-    --color1:#7da44d;  /* primary */
-    --color2:#3e5e2a;  /* primary dark */
-    --color3:#fff4e3;  /* background */
-    --color6:#737373;  /* input border */
-    --color7:#41535d;  /* text */
+/*!* ---------- Variabelen ---------- *!*/
+/*:root{*/
+/*    --color1:#7da44d;  !* primary *!*/
+/*    --color2:#3e5e2a;  !* primary dark *!*/
+/*    --color3:#fff4e3;  !* background *!*/
+/*    --color6:#737373;  !* input border *!*/
+/*    --color7:#41535d;  !* text *!*/
 
-    /* Layout */
-    --header-h: 88px;                     /* vaste headerhoogte */
-    --gap: 24px;
-    --tiles-size: 125%;
-}
+/*    !* Layout *!*/
+/*    --header-h: 88px;                     !* vaste headerhoogte *!*/
+/*    --gap: 24px;*/
+/*    --tiles-size: 125%;*/
+/*}*/
 
-/* ---------- Basis ---------- */
-*{ box-sizing: border-box; }
-html, body{ height:100%; }
+/*!* ---------- Basis ---------- *!*/
+/**{ box-sizing: border-box; }*/
+/*html, body{ height:100%; }*/
 
-body{
-    margin:0;
-    color:var(--color7);
-    font-family:"Fredoka", sans-serif;
-    background:var(--color3);
-    background-image:url("../images/tiles.png");
-    background-repeat:repeat-y;
-    background-position:center;
-    background-attachment:fixed;
-    background-size:var(--tiles-size);
-    display:flex;
-    flex-direction:column;
-}
+/*body{*/
+/*    margin:0;*/
+/*    color:var(--color7);*/
+/*    font-family:"Fredoka", sans-serif;*/
+/*    background:var(--color3);*/
+/*    background-image:url("../images/tiles.png");*/
+/*    background-repeat:repeat-y;*/
+/*    background-position:center;*/
+/*    background-attachment:fixed;*/
+/*    background-size:var(--tiles-size);*/
+/*    display:flex;*/
+/*    flex-direction:column;*/
+/*}*/
 
-/* Headings */
-h1{ font-family:"Fredoka",sans-serif; font-size:2.5rem; font-weight:bold; }
-h2{ font-family:"Fredoka",sans-serif; font-size:2rem; }
-h4{ font-family:Lazytype, sans-serif; font-size:1.5rem; font-weight:normal; }
+/*!* Headings *!*/
+/*h1{ font-family:"Fredoka",sans-serif; font-size:2.5rem; font-weight:bold; }*/
+/*h2{ font-family:"Fredoka",sans-serif; font-size:2rem; }*/
+/*h4{ font-family:Lazytype, sans-serif; font-size:1.5rem; font-weight:normal; }*/
 
 /* ---------- Header (fixed top) ---------- */
 header{
@@ -64,41 +64,50 @@ header{
     padding:0 var(--gap);
     text-align:center;
 }
-header a{ color:#fff; text-decoration:none; font-weight:bold; }
+/*header a{ color:#fff; text-decoration:none; font-weight:normal; }*/
 
-/* ---------- Nav: HAMBURGER IN DE HEADER ---------- */
-/* Alleen de knop (nav) hangt nu in de header linksboven */
-nav{
-    position:fixed !important;
-    top:12px !important;            /* binnen de header */
-    left:15px !important;
-    z-index:1001 !important;        /* boven header */
-    width:auto !important;
-    min-height:auto !important;
-}
-nav img{
-    display:block;
-    width:64px;                     /* knopgrootte */
-    height:auto;
-}
+/*!* ---------- Nav: HAMBURGER IN DE HEADER ---------- *!*/
+/*!* Alleen de knop (nav) hangt nu in de header linksboven *!*/
+/*nav{*/
+/*    z-index: 1001;*/
+/*    position: fixed;*/
+/*    left: 3vw;*/
+/*    top: 1.5vh;*/
+/*    margin:5px;*/
 
-/* Slide-out menu: start onder de header */
-#navList{
-    position:fixed !important;
-    top:var(--header-h) !important; /* niet over de header heen */
-    left:0 !important;
-    width:40vw;
-    height:calc(100dvh - var(--header-h));
-    padding:3vh 1vw;
-    background:var(--color2);
-    text-align:center;
-    flex-direction:column;
-    gap:2vh;
-    overflow-y:auto;
-}
-nav a{ text-decoration:none; color:var(--color3); }
-.open{ display:flex; }
-.close{ display:none; }
+/*}*/
+
+/*nav img {*/
+/*    !*display: block;*!*/
+/*    height: 6vh; !* hamburger-grootte *!*/
+/*}*/
+
+/*!* Slide-out menu onder de header *!*/
+/*#navList{*/
+/*    position: fixed;*/
+/*    top: 0;*/
+/*    left: 0;*/
+/*    width: 50vw;*/
+/*    padding: 5vh 1vw;*/
+/*    background: var(--color2);*/
+/*    text-align: center;*/
+/*    flex-direction: column;*/
+/*    gap: 4vh;*/
+/*    height: 100%;*/
+/*}*/
+
+/*nav a {*/
+/*    text-decoration: none;*/
+/*    color: var(--color3);*/
+/*}*/
+
+/*.open {*/
+/*    display: flex;*/
+/*}*/
+
+/*.close {*/
+/*    display: none;*/
+/*}*/
 
 /* ---------- Content offset ---------- */
 /* Niet onder header vallen; géén vaste linker marge meer */
