@@ -7,7 +7,7 @@
 }
 
 /* ---------------- Vars ---------------- */
-:root{
+:root {
     --color1: #7da44d;
     --color2: #3e5e2a;
     --color3: #fff4e3;
@@ -16,14 +16,19 @@
     --color6: #737373;
     --color7: #41535d;
 
-    --header-h: 88px;    /* vaste headerhoogte site-breed */
+    --header-h: 88px; /* vaste headerhoogte site-breed */
     --gap: 24px;
     --tiles-size: 125%;
 }
 
 /* ---------------- Base ---------------- */
-* { box-sizing: border-box; }
-html, body { height: 100%; }
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+}
 
 body {
     background: var(--color3);
@@ -33,113 +38,151 @@ body {
     background-attachment: fixed;
     background-size: var(--tiles-size);
     margin: 0;
-    color: var(--color7);
-    font-family: "Fredoka", sans-serif;
+    color: black;
 }
 
 /* Headings */
-h1 { font-family: "Fredoka", sans-serif; font-size: 2.5rem; font-weight: bold; }
-h2 { font-family: "Fredoka", sans-serif; font-size: 2rem; }
-h4 { font-family: Lazytype, sans-serif; font-size: 1.5rem; font-weight: normal; }
+h1 {
+    font-family: "Fredoka", sans-serif;
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+h2 {
+    font-family: "Fredoka", sans-serif;
+    font-size: 2rem;
+}
+
+h4 {
+    font-family: Lazytype, sans-serif;
+    font-size: 1.5rem;
+    font-weight: normal;
+}
 
 /* ---------------- Header (fixed) ---------------- */
-header{
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    height: var(--header-h);
-    z-index: 1000;
+/*header {*/
+/*    position: fixed;*/
+/*    top: 0;*/
+/*    left: 0;*/
+/*    right: 0;*/
+/*    height: var(--header-h);*/
+/*    z-index: 1000;*/
+/*    background: var(--color1);*/
+/*    padding: 0 var(--gap);*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    justify-content: center; !* of space-between als je links/rechts items hebt *!*/
+/*    text-align: center;*/
+/*    border-bottom: 5px solid #ABCFAE;*/
+/*    box-shadow: 0 6px 18px rgba(0, 0, 0, .12);*/
+/*}*/
+
+header {
     background: var(--color1);
-    border-bottom: 5px solid #ABCFAE;
-    box-shadow: 0 6px 18px rgba(0,0,0,.12);
-
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;  /* links start; titel wordt absoluut gecentreerd */
-    gap: 12px;
-    padding: 0 var(--gap);
-}
-
-/* Titel exact gecentreerd over de hele header */
-header h1{
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    margin: 0;
+    padding: 2vh 0;
     text-align: center;
-    color: #fff;
-    pointer-events: none; /* zorgt dat knoppen links/rechts klikbaar blijven */
+    border-bottom: 5px solid #ABCFAE;
+    /*box-shadow: 0 15px 10px 1px;*/
 }
 
-/* Alles wat direct in header staat en rechts moet komen (img/svg/picture/a) */
-header > img,
-header > svg,
-header > picture,
-header > a{
-    height: 64px;
-    width: auto;
+header a {
+    position: absolute;
+    right: 1.5vw;
+    top: 1.5vh;
+    height: 7vh;
 }
-header > img:first-of-type,
-header > svg:first-of-type,
-header > picture:first-of-type,
-header > a:first-of-type{
-    /* duw de eerste ‘rechterkant’-child naar rechts;
-       nav staat links, h1 is absolute gecentreerd */
-    margin-left: auto;
+
+header a img {
+    height: 100%;
+}
+
+header a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
 }
 
 /* ---------------- Nav (hamburger in header) ---------------- */
-nav{
-    position: relative;     /* nav zit ÍN de header, geen fixed meer */
-    z-index: 1001;
-}
-nav img{
-    display: block;
-    width: 64px;            /* hamburger-grootte */
-    height: auto;
+nav {
+    position: absolute;
+    left: 3vw;
+    top: 1.5vh;
+    z-index: 1001; /* boven de header-content */
 }
 
-/* Slide-out menu onder de header */
-#navList{
+nav img {
+    /*display: block;*/
+    height: 6vh; /* hamburger-grootte */
+}
+
+/* Slide-out menu start onder de header */
+#navList {
     position: fixed;
-    top: var(--header-h);
+    top: 0;
     left: 0;
-    width: 40vw;
-    height: calc(100dvh - var(--header-h));
-    padding: 3vh 1vw;
+    width: 50vw;
+    padding: 5vh 1vw;
     background: var(--color2);
     text-align: center;
     flex-direction: column;
-    gap: 2vh;
-    overflow-y: auto;
+    gap: 4vh;
+    height: 100%;
 }
-nav a{ text-decoration: none; color: var(--color3); }
-.open{ display: flex; }
-.close{ display: none; }
+
+nav a {
+    text-decoration: none;
+    color: var(--color3);
+}
+
+.open {
+    display: flex;
+}
+
+.close {
+    display: none;
+}
 
 /* ---------------- Page content offset ---------------- */
-main{
-    padding-top: calc(var(--header-h) + var(--gap));
-    padding-left: 16px;
-    padding-right: 16px;
-}
+/*main {*/
+/*    padding-top: calc(var(--header-h) + var(--gap));*/
+/*    padding-left: 16px;*/
+/*    padding-right: 16px;*/
+/*}*/
 
 /* ---------------- Responsive ---------------- */
-@media (max-width: 900px){
-    #navList{ width: 80vw; }
-}
-@media (max-width: 768px){
-    nav img{ width: 56px; }
-    header > img,
-    header > svg,
-    header > picture{ height: 56px; }
-}
-@media (max-width: 480px){
-    header{ gap: 8px; }
-    nav img{ width: 48px; }
-    header > img,
-    header > svg,
-    header > picture{ height: 48px; }
-}
+/*@media (max-width: 900px) {*/
+/*    #navList {*/
+/*        width: 60vw;*/
+/*    }*/
+/*}*/
+
+/*@media (max-width: 768px) {*/
+/*    nav img {*/
+/*        width: 56px;*/
+/*    }*/
+
+/*    header > img,*/
+/*    header > svg,*/
+/*    header > picture {*/
+/*        height: 56px;*/
+/*    }*/
+/*}*/
+
+/*@media (max-width: 480px) {*/
+/*    header {*/
+/*        gap: 8px;*/
+/*    }*/
+
+/*    nav img {*/
+/*        width: 48px;*/
+/*    }*/
+
+/*    header > img,*/
+/*    header > svg,*/
+/*    header > picture {*/
+/*        height: 48px;*/
+/*    }*/
+/*}*/
 
 /* --------- Verwijderd/voorkomen (conflicterend uit oude style.css) ----------
    - GEEN tweede 'header { ... }' blok met andere padding/positionering
