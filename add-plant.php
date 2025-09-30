@@ -209,8 +209,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </style>
 </head>
 <body class="page-add-plant">
+<?php include 'Includes/nav.php'; ?>
 <header>
-    <?php include 'Includes/nav.php'; ?>
+
     <h1 id="headerH1">Home</h1>
 </header>
 <main class="form-page">
