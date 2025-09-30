@@ -4,12 +4,13 @@ require_once 'includes/connectie.php';
 
 if (isset($_SESSION['user'])) {
     $username = $_SESSION['user']['username'];
+    $userId = $_SESSION['user']['userId'];
 
-    $result = mysqli_query($database, "SELECT COUNT(*) as total FROM plants ");
+    $result = mysqli_query($db, "SELECT COUNT(*) as total FROM plants WHERE owner = '$userId' ");
     $row = mysqli_fetch_assoc($result);
     $plantCount = $row['total'];
 
-    $result = mysqli_query($database, "SELECT COUNT(*) as total FROM badges");
+    $result = mysqli_query($db, "SELECT COUNT(*) as total FROM badges");
     $row = mysqli_fetch_assoc($result);
     $badgeCount = $row['total'];
 } else {
