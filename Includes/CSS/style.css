@@ -6,8 +6,8 @@
     src: url("../fonts/Lazytype-1jz0Z.ttf");
 }
 
-* {
-    /*Color palette*/
+/* ---------------- Vars ---------------- */
+:root{
     --color1: #7da44d;
     --color2: #3e5e2a;
     --color3: #fff4e3;
@@ -15,57 +15,90 @@
     --color5: #945e3c;
     --color6: #737373;
     --color7: #41535d;
+
+    --header-h: 88px;    /* vaste headerhoogte site-breed */
+    --gap: 24px;
+    --tiles-size: 125%;
 }
 
-h1 {
+/* ---------------- Base ---------------- */
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+
+body {
+    background: var(--color3);
+    background-image: url("../images/tiles.png");
+    background-repeat: repeat-y;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: var(--tiles-size);
+    margin: 0;
+    color: var(--color7);
     font-family: "Fredoka", sans-serif;
-    font-size: 2.5rem;
-    font-weight: bold;
 }
 
-h2 {
-    font-family: "Fredoka", sans-serif;
-    font-size: 2rem;
-}
+/* Headings */
+h1 { font-family: "Fredoka", sans-serif; font-size: 2.5rem; font-weight: bold; }
+h2 { font-family: "Fredoka", sans-serif; font-size: 2rem; }
+h4 { font-family: Lazytype, sans-serif; font-size: 1.5rem; font-weight: normal; }
 
-h4 {
-    font-family: Lazytype, sans-serif;
-    font-size: 1.5rem;
-    font-weight: normal;
-}
-
+/* ---------------- Header (fixed) ---------------- */
 header{
     position: fixed;
     top: 0; left: 0; right: 0;
     height: var(--header-h);
     z-index: 1000;
     background: var(--color1);
-    padding: 0 var(--gap);
-    display: flex;
-    align-items: center;
-    justify-content: center;   /* of space-between als je links/rechts items hebt */
-    text-align: center;
     border-bottom: 5px solid #ABCFAE;
     box-shadow: 0 6px 18px rgba(0,0,0,.12);
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;  /* links start; titel wordt absoluut gecentreerd */
+    gap: 12px;
+    padding: 0 var(--gap);
 }
-header a { color: #fff; text-decoration: none; font-weight: bold; }
+
+/* Titel exact gecentreerd over de hele header */
+header h1{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+    text-align: center;
+    color: #fff;
+    pointer-events: none; /* zorgt dat knoppen links/rechts klikbaar blijven */
+}
+
+/* Alles wat direct in header staat en rechts moet komen (img/svg/picture/a) */
+header > img,
+header > svg,
+header > picture,
+header > a{
+    height: 64px;
+    width: auto;
+}
+header > img:first-of-type,
+header > svg:first-of-type,
+header > picture:first-of-type,
+header > a:first-of-type{
+    /* duw de eerste ‘rechterkant’-child naar rechts;
+       nav staat links, h1 is absolute gecentreerd */
+    margin-left: auto;
+}
 
 /* ---------------- Nav (hamburger in header) ---------------- */
 nav{
-    position: fixed;
-    top: 12px;               /* ín de header */
-    left: 15px;
-    z-index: 1001;           /* boven de header-content */
-    width: auto;
-    min-height: auto;
+    position: relative;     /* nav zit ÍN de header, geen fixed meer */
+    z-index: 1001;
 }
 nav img{
     display: block;
-    width: 64px;             /* hamburger-grootte */
+    width: 64px;            /* hamburger-grootte */
     height: auto;
 }
 
-/* Slide-out menu start onder de header */
+/* Slide-out menu onder de header */
 #navList{
     position: fixed;
     top: var(--header-h);
@@ -79,44 +112,37 @@ nav img{
     gap: 2vh;
     overflow-y: auto;
 }
-nav a { text-decoration: none; color: var(--color3); }
-.open { display: flex; }
-.close { display: none; }
+nav a{ text-decoration: none; color: var(--color3); }
+.open{ display: flex; }
+.close{ display: none; }
 
-
-body {
-    background: var(--color3);
-    background-image: url("../images/tiles.png");
-    background-repeat: repeat-y;
-    background-position: center;
-    background-attachment: fixed;
-    background-size: 125%;
+/* ---------------- Page content offset ---------------- */
+main{
+    padding-top: calc(var(--header-h) + var(--gap));
+    padding-left: 16px;
+    padding-right: 16px;
 }
 
-header {
-    background: var(--color1);
-    padding: 2vh 0;
-    text-align: center;
-    border-bottom: 5px solid #ABCFAE;
-    /*box-shadow: 0 15px 10px 1px;*/
+/* ---------------- Responsive ---------------- */
+@media (max-width: 900px){
+    #navList{ width: 80vw; }
+}
+@media (max-width: 768px){
+    nav img{ width: 56px; }
+    header > img,
+    header > svg,
+    header > picture{ height: 56px; }
+}
+@media (max-width: 480px){
+    header{ gap: 8px; }
+    nav img{ width: 48px; }
+    header > img,
+    header > svg,
+    header > picture{ height: 48px; }
 }
 
-header a {
-    position: absolute;
-    right: 1.5vw;
-    top: 1.5vh;
-    width: 15vw;
-}
-
-header a img {
-    width: 100%;
-}
-
-
-@media only screen and (max-width: 412px) {
-    /*Need to do more research into other common screen sizes so it won't break*/
-    /*ID's*/
-    /*classes*/
-
-
-}
+/* --------- Verwijderd/voorkomen (conflicterend uit oude style.css) ----------
+   - GEEN tweede 'header { ... }' blok met andere padding/positionering
+   - GEEN 'header a { position:absolute; right:... }' (veroorzaakte overlap)
+   - GEEN 'nav { position:absolute; top:20px; }' (verschoof uit de header)
+--------------------------------------------------------------------------- */
