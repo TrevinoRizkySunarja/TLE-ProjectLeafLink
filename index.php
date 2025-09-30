@@ -95,6 +95,8 @@ if (isset($_GET['id'])) {
                             <img class="favoritePlant"
                                  src="Includes/images/<?= $plant['species'] ?>.png"
                                  alt=""></a>
+                    <?php } else if ($index == 0) { ?>
+                        <p class="noPlants">Voeg planten toe om ze hier te zien!</p>
                     <?php } ?>
                 <?php } ?>
             <?php } ?>

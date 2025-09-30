@@ -2,6 +2,10 @@
     margin: 0;
 }
 
+main {
+    justify-content: center;
+}
+
 .border {
     text-align: center;
     padding: 2vh;
@@ -58,7 +62,7 @@
 }
 
 .shelf img {
-    max-height: 13vh;
+    max-height: 18vh;
     width: auto;
     padding: 1vh 0 6vh 0;
     /*padding: 0 0 7vh 7vw;*/
@@ -69,9 +73,9 @@ img {
 }
 
 .noPlants {
-    padding-bottom: 5vh;
+    padding-bottom: 13vh;
     height: 10vh;
-    margin-top: 3vh;
+    margin-top: 4vh;
 }
 
 /*Plants info popup*/
@@ -86,7 +90,8 @@ img {
     position: fixed;
     bottom: 0;
     left: 0;
-    padding-top: 8vh;
+    padding-top: 9vh;
+    padding-bottom: 2vh;
 }
 
 #plantInfo {
