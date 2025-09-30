@@ -1,12 +1,10 @@
-document.getElementById("waterPlant").addEventListener("click", waterPlant);
-document.getElementById("btnAlarmSet").addEventListener("click", selectAlarms);
-
 window.onload = function(){
     //set up water timer
-    goodState = false;
+    goodState = true;
     countDownTime = 100;
     runWaterTimer();
-    initiate(); //to load in all other variables
+    initiate(); 
+    preventScroll();
 };
 
 window.onclick = function(event) { //when clicked next to the pop up
@@ -15,7 +13,6 @@ window.onclick = function(event) { //when clicked next to the pop up
   }
 }
 
-//empty variables
 /*variables pop up*/
 var popup;
 var TextForPopup;
@@ -25,12 +22,37 @@ var xSpan;
 var countDownTime;
 var goodState;
 
+/*alarm variables*/
+var editAlarms;
+var notifications = [false, false, false, false, false]
 
-function initiate(){
+function initiate(){ //to load in all other variables
     popup = document.getElementById("popUp");
     TextForPopup = document.getElementById("popUpText");
     xSpan = document.getElementById("closeSpan");
+    editAlarms = false;
+
+    document.getElementById("btnAlarmSet").addEventListener("click", selectAlarms);
+    document.getElementById("btnWaterPlant").addEventListener("click", userWaterPlant); //add to different button to water plant
+
 }
+
+function preventScroll() {
+  // Get the current page scroll position
+  scrollTop =
+  window.pageYOffset ||
+  document.documentElement.scrollTop;
+    scrollLeft =
+       window.pageXOffset ||
+        document.documentElement.scrollLeft,
+
+        // if any scroll is attempted,
+        // set this to the previous value
+        window.onscroll = function () {
+        window.scrollTo(scrollLeft, scrollTop);
+      };
+}
+
 
 //reset time when plant has been watered
 function resetTime(){
@@ -50,7 +72,6 @@ var waterPlant = setInterval(function() {
     clearInterval(waterPlant);
     goodState = false;
     document.getElementById("plantImg").src = "Includes/images/plantDehidrated.png";
-    //call notifaction function ✨✨✨✨ 
     showNotification(1);
   } else {
     countDownTime = countDownTime - 1;
@@ -59,7 +80,7 @@ var waterPlant = setInterval(function() {
 };
 
 //function to change plant image based on what timer ran out (first version is water)
-function waterPlant(){
+function userWaterPlant(){
     if (goodState == false){
         document.getElementById("plantImg").src = "Includes/images/digitalPlant.png";
         goodState = true;
@@ -92,29 +113,123 @@ function showNotification(notifyType) { //show notification
     case 6:
         TextForPopup.innerText = "Bekijk status van je plant";
     break;
+    case 7:
+        TextForPopup.innerText = "chose what you'd like a notifaction of!";
+    break;
+    case 8:
+        TextForPopup.innerText = "notification settings off";
+    break;
+    //alerts
+    case 9:
+        TextForPopup.innerText = "Water plant alert on";
+    break;
+    case 10:
+        TextForPopup.innerText = "Change pot alert on";
+    break;
+    case 11:
+        TextForPopup.innerText = "Fertalize alert on";
+    break;
+    case 12:
+        TextForPopup.innerText = "Trim plant on";
+    break;
+    case 13:
+        TextForPopup.innerText = "Light change on";
+    break;
+    case 14:
+        TextForPopup.innerText = "Water plant alert off";
+    break;
+    case 15:
+        TextForPopup.innerText = "Change pot alert off";
+    break;
+    case 16:
+        TextForPopup.innerText = "Fertalize alert off";
+    break;
+    case 17:
+        TextForPopup.innerText = "Trim plant off";
+    break;
+    case 18:
+        TextForPopup.innerText = "Light change off";
+    break;
   }
 }
 
-//save for later
-// xSpan.onclick = function() { //remove when pressed x
-//   popup.style.display = "none";
-// }
-
-
-
 /*alarm system*/
 function selectAlarms(){
-  alert("choose alarms");
-  // document.getElementById("waterPlant").addEventListener("click", waterPlant);
-  document.getElementById("btncChangePot").addEventListener("click", function(){alert("change pot alert on")});
-  document.getElementById("btnFertalizePlant").addEventListener("click", function(){alert("fertalize alert on")});
-  document.getElementById("btnTrimPlant").addEventListener("click", function(){alert("trim plant on")});
-  document.getElementById("btnChangeLight").addEventListener("click", function(){alert("light change on")});
+  if(editAlarms == false){ //for some reason it stores the press of the button and executes it once it's 'clickable'
+    editAlarms = true;
+    document.getElementById("interaction").style.display = "block";
+    document.getElementById("information").style.display = "none";
+    document.getElementById("btnAlarmSet").src = "Includes/images/alarmchoice_active.png"
+    document.getElementById("btnNotifWaterPlant").addEventListener("click", waterplantAlarm);
+    document.getElementById("btncChangePot").addEventListener("click", changePotAlarm);
+    document.getElementById("btnFertalizePlant").addEventListener("click", fertalizePlant);
+    document.getElementById("btnTrimPlant").addEventListener("click", tripPlant);
+    document.getElementById("btnChangeLight").addEventListener("click", changeLight);
+    showNotification(7);
 
+  } else{
+    editAlarms = false;
+    document.getElementById("interaction").style.display = "none";
+    document.getElementById("information").style.display = "flex"; //block missaligns everything
+    document.getElementById("btnAlarmSet").src = "Includes/images/alarmchoice_inactive.png"
+    document.getElementById("btnNotifWaterPlant").removeEventListener("click", waterplantAlarm);
+    document.getElementById("btncChangePot").removeEventListener("click", changePotAlarm);
+    document.getElementById("btnFertalizePlant").removeEventListener("click", fertalizePlant);
+    document.getElementById("btnTrimPlant").removeEventListener("click", tripPlant);
+    document.getElementById("btnChangeLight").removeEventListener("click", changeLight);
+    showNotification(8);
+  }
 }
-// 1. if alarm clock pressed then change look of 'info element' and then add event listeners to other buttons
-// 2. add pop up to communicate to user that they are in 'chose alarms' mode
-//if active and pressed again then change eventlisteners back to what they were (or delete and reapply by just running an external function to prevent a huge mess)
+
+function waterplantAlarm(){
+  if(notifications[0] == false){
+    notifications[0] = true;
+    showNotification(9)
+  } else {
+    showNotification(14);
+    notifications[0] = false;
+  }
+}
+
+function changePotAlarm(){
+  if(notifications[0] == false){
+    notifications[0] = true;
+    showNotification(10)
+  } else {
+    showNotification(15);
+    notifications[0] = false;
+  }
+}
+
+function fertalizePlant(){
+    if(notifications[0] == false){
+    notifications[0] = true;
+    showNotification(11)
+  } else {
+    showNotification(16);
+    notifications[0] = false;
+  }
+}
+
+function tripPlant(){
+    if(notifications[0] == false){
+    notifications[0] = true;
+    showNotification(12)
+  } else {
+    showNotification(17);
+    notifications[0] = false;
+  }
+}
+
+function changeLight(){
+      if(notifications[0] == false){
+    notifications[0] = true;
+    showNotification(13);
+  } else {
+    showNotification(18);
+    notifications[0] = false;
+  }
+}
 
 //(for each event listener) if pressed then bool true (for now) that they want to recieve notifications
 
@@ -136,5 +251,3 @@ function selectAlarms(){
 //sounds that the pot makes over the phone
 //reminder notification to water it when on the page itself
 //Add API for action temprature measuring 
-
-/* Idea for image directories: 1.icons 2.background 3.plants (for saving) */
