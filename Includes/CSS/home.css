@@ -60,7 +60,7 @@
 .shelf img {
     max-height: 13vh;
     width: auto;
-    padding: 2vh 0 6vh 0;
+    padding: 1vh 0 6vh 0;
     /*padding: 0 0 7vh 7vw;*/
 }
 
@@ -68,12 +68,19 @@ img {
     width: 100%;
 }
 
+.noPlants {
+    padding-bottom: 5vh;
+    height: 10vh;
+    margin-top: 3vh;
+}
+
+/*Plants info popup*/
 #PlantStatusSec {
     background: #E9CDA2;
     border-top: 3px solid black;
     margin-top: 2vh;
     min-height: 18vh;
-    display: none;
+    display: block;
     text-align: center;
     width: 100%;
     position: fixed;
