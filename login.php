@@ -72,7 +72,6 @@ if (isset($_POST['submit'])) {
 </head>
 <body>
     <?php include 'Includes/hoofd.php'; ?>
-    
     <form action="" method="post">
         <div>
             <div>
@@ -91,10 +90,11 @@ if (isset($_POST['submit'])) {
             </div>
             <div>
                 <input id="password" name="password" type="password" placeholder="Voer wachtwoord in">
-            <p class="help is-danger">
-                <?= $errors['password'] ?? '' ?>
-            </p>
+                <p class="help is-danger">
+                    <?= $errors['password'] ?? '' ?>
+                </p>
             </div>
+        </div>
         <div class="button-container">
             <div>
                 <a href="./registratie.php" class="button-link">Registreer</a>
@@ -114,5 +114,11 @@ if (isset($_POST['submit'])) {
         </p>
         <?php endif; ?>
     </form>
+    <div class="shelf-container">
+        <div class="books"></div>
+        <div class="shelf"></div>
+        <div class="cat"></div>
+        <div class="tiles"></div>
+    </div>
 </body>
 </html>

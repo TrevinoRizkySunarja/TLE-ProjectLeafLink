@@ -2,7 +2,7 @@
 body {
     margin: 0;
     background-image: none;
-    background-color: var(--color4);
+    background-color: #e8cda2;
 }
 
 input {
@@ -20,6 +20,8 @@ form {
     justify-content: center;
     align-items: center;
     height: 30vh;
+    margin-top: 10vh;
+    gap: 3vh;
 }
 
 .button-container {
@@ -35,4 +37,56 @@ form {
     color: white;
     flex: 1;
 }
+
+.shelf-container {
+    position: relative;
+    width: 100vw;
+    height: 30vh; 
+    margin-top: 10vh;
+}
+
+.shelf {
+    background-image: url("../images/shelf.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 100vw;
+    height: 10vh;
+    position: absolute;
+    bottom: 0;
+}
+
+.books {
+    background-image: url("../images/uprightbooks.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    width: 20vw;
+    height: 15vh;
+    position: absolute;
+    bottom: 10vh; 
+}
+
+.cat {
+    background-image: url("../images/sleepingcat.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    width: 120vw;
+    height: 13vh;
+    position: absolute;
+    bottom: 7vh;
+}
+
+.tiles {
+    background-image: url("../images/tiles.png");
+    background-size: auto 200%;
+    background-repeat: repeat-x;
+    background-position: bottom;
+    width: 100vw;
+    height: 8vh;
+    position: absolute;
+    bottom: 0;
+    z-index: 0; 
+}
+
 
