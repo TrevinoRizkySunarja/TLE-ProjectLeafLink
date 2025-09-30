@@ -69,36 +69,45 @@ header a{ color:#fff; text-decoration:none; font-weight:normal; }
 /* ---------- Nav: HAMBURGER IN DE HEADER ---------- */
 /* Alleen de knop (nav) hangt nu in de header linksboven */
 nav{
-    position:fixed !important;
-    top:12px !important;            /* binnen de header */
-    left:15px !important;
-    z-index:1001 !important;        /* boven header */
-    width:auto !important;
-    min-height:auto !important;
-}
-nav img{
-    display:block;
-    width:64px;                     /* knopgrootte */
-    height:auto;
+    z-index: 1001;
+    position: fixed;
+    left: 3vw;
+    top: 1.5vh;
+    margin:5px;
+
 }
 
-/* Slide-out menu: start onder de header */
-#navList{
-    position:fixed !important;
-    top:var(--header-h) !important; /* niet over de header heen */
-    left:0 !important;
-    width:40vw;
-    height:calc(100dvh - var(--header-h));
-    padding:3vh 1vw;
-    background:var(--color2);
-    text-align:center;
-    flex-direction:column;
-    gap:2vh;
-    overflow-y:auto;
+nav img {
+    /*display: block;*/
+    height: 6vh; /* hamburger-grootte */
 }
-nav a{ text-decoration:none; color:var(--color3); }
-.open{ display:flex; }
-.close{ display:none; }
+
+/* Slide-out menu onder de header */
+#navList{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 50vw;
+    padding: 5vh 1vw;
+    background: var(--color2);
+    text-align: center;
+    flex-direction: column;
+    gap: 4vh;
+    height: 100%;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--color3);
+}
+
+.open {
+    display: flex;
+}
+
+.close {
+    display: none;
+}
 
 /* ---------- Content offset ---------- */
 /* Niet onder header vallen; géén vaste linker marge meer */
