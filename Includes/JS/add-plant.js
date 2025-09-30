@@ -54,10 +54,10 @@ function populateFormFromStorage() {
     if (watering) {
         document.getElementById("watering").value = watering;
         let wateringMap = {
-            "Frequent": "frequent",
-            "Average": "average",
-            "Minimum": "minimum",
-            "None": "none"
+            "Frequent": "Frequent",
+            "Average": "Gemiddeld",
+            "Minimum": "Minimaal",
+            "None": "Geen"
         };
 
         let mappedWatering = wateringMap[watering] || watering.toLowerCase();
@@ -68,12 +68,12 @@ function populateFormFromStorage() {
         document.getElementById("sunlight").value = sunlight;
         // Handle sunlight array - take first value and map it
         let sunlightMap = {
-            "full sun": "full_sun",
-            "part shade": "part_shade",
-            "full shade": "full_shade",
-            "part sun": "part_sun",
-            "partial shade": "part_shade",
-            "partial sun": "part_sun"
+            "full sun": "Volle zonlicht",
+            "part shade": "Halfschaduw",
+            "full shade": "Volledige schaduw",
+            "part sun": "Deels zonlicht",
+            "partial shade": "Halfschaduw",
+            "partial sun": "Deels zonlicht"
         };
 
         // If sunlight is a comma-separated string, take the first value
