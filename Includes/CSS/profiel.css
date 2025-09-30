@@ -30,16 +30,16 @@ header {
 
 .avatar-container {
     display: flex;
-    flex-direction: column; 
-    align-items: center; 
+    flex-direction: column;
+    align-items: center;
     margin-bottom: 20px;
-    padding: 0;  
+    padding: 0;
 }
 
 .avatar-container img {
-    width: 120px;       
-    height: 120px;      
-    max-width: 100%; 
+    width: 120px;
+    height: 120px;
+    max-width: 100%;
     object-fit: cover;
     margin-bottom: 5px
 }
@@ -58,7 +58,7 @@ header {
     text-align: center;
     margin-top: 0px;
     margin-bottom: 20px;
-    
+
 }
 
 .pnb {
@@ -97,11 +97,11 @@ header {
 }
 
 #zoekInvoer {
-    background-color: #7da44d;       
-    color: black;                     
-    border: 2px solid black;                    
-    border-radius: 20px;              
-    padding: 15px 40px;               
+    background-color: #7da44d;
+    color: black;
+    border: 2px solid black;
+    border-radius: 20px;
+    padding: 15px 40px;
     font-family: 'Fredoka', sans-serif;
     font-weight: bold;
     padding: 15px 40px;
@@ -145,7 +145,7 @@ header {
     background-image: url("../images/noteplank.png");
     background-size: 100%;
     margin-top: 40px;
-       
+
 }
 
 .shelf {
@@ -157,7 +157,7 @@ header {
     width: 80%;
     margin-top: 30px;
     display: flex;
-    
+
 }
 
 

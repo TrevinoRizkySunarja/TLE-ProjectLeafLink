@@ -2,7 +2,7 @@
 $host = "127.0.0.1";
 $user = "root";
 $password = "";
-$database = "leaflink";
+$database = "leafLink";
 
 //$host = "stud.hosted.hr.nl";
 //$user = "0998374";
