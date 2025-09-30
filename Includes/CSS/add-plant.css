@@ -1,165 +1,255 @@
+/* =============================
+   add-plant.css (alles-in-1)
+   ============================= */
+
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Alan+Sans:wght@300..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Fredoka&display=swap');
 
-/* ====== Basis ====== */
+/* Local font */
+@font-face{
+    font-family: Lazytype;
+    src: url("../fonts/Lazytype-1jz0Z.ttf");
+}
+
+/* ---------- Variabelen ---------- */
 :root{
-    /* zorg dat deze kleuren al in je project staan */
-    --color1:#7da44d; /* primary */
-    --color2:#3e5e2a; /* primary dark */
-    --color3:#fff4e3; /* background */
-    --color6:#737373; /* input border */
-    --color7:#41535d; /* text */
+    --color1:#7da44d;  /* primary */
+    --color2:#3e5e2a;  /* primary dark */
+    --color3:#fff4e3;  /* background */
+    --color6:#737373;  /* input border */
+    --color7:#41535d;  /* text */
+
+    /* Layout */
+    --header-h: 88px;                     /* vaste headerhoogte */
+    --gap: 24px;
+    --tiles-size: 125%;
 }
 
-body {
-    font-family: "Fredoka", sans-serif;
-    background: var(--color3);
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    color: var(--color7);
+/* ---------- Basis ---------- */
+*{ box-sizing: border-box; }
+html, body{ height:100%; }
+
+body{
+    margin:0;
+    color:var(--color7);
+    font-family:"Fredoka", sans-serif;
+    background:var(--color3);
+    background-image:url("../images/tiles.png");
+    background-repeat:repeat-y;
+    background-position:center;
+    background-attachment:fixed;
+    background-size:var(--tiles-size);
+    display:flex;
+    flex-direction:column;
 }
 
-/* ====== Container ====== */
-.form-container {
-    background: #fff;
-    padding: 2rem 3rem;
-    border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-    max-width: 600px;
-    width: 100%;
-    border: 3px solid var(--color1);
-    animation: fadeIn 0.5s ease-in-out;
-    margin: 2rem;            /* voorkomt dat de card plakt tegen de randen op kleine schermen */
+/* Headings */
+h1{ font-family:"Fredoka",sans-serif; font-size:2.5rem; font-weight:bold; }
+h2{ font-family:"Fredoka",sans-serif; font-size:2rem; }
+h4{ font-family:Lazytype, sans-serif; font-size:1.5rem; font-weight:normal; }
+
+/* ---------- Header (fixed top) ---------- */
+header{
+    position:fixed !important;
+    top:0 !important; left:0 !important; right:0 !important;
+    height:var(--header-h);
+    z-index:1000;
+    background:var(--color1);
+    border-bottom:5px solid #ABCFAE;
+    box-shadow:0 6px 18px rgba(0,0,0,.12);
+    display:flex;
+    align-items:center;
+    justify-content:center;        /* of space-between als je links/rechts items hebt */
+    padding:0 var(--gap);
+    text-align:center;
+}
+header a{ color:#fff; text-decoration:none; font-weight:bold; }
+
+/* ---------- Nav: HAMBURGER IN DE HEADER ---------- */
+/* Alleen de knop (nav) hangt nu in de header linksboven */
+nav{
+    position:fixed !important;
+    top:12px !important;            /* binnen de header */
+    left:15px !important;
+    z-index:1001 !important;        /* boven header */
+    width:auto !important;
+    min-height:auto !important;
+}
+nav img{
+    display:block;
+    width:64px;                     /* knopgrootte */
+    height:auto;
 }
 
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to   { opacity: 1; transform: translateY(0); }
+/* Slide-out menu: start onder de header */
+#navList{
+    position:fixed !important;
+    top:var(--header-h) !important; /* niet over de header heen */
+    left:0 !important;
+    width:40vw;
+    height:calc(100dvh - var(--header-h));
+    padding:3vh 1vw;
+    background:var(--color2);
+    text-align:center;
+    flex-direction:column;
+    gap:2vh;
+    overflow-y:auto;
+}
+nav a{ text-decoration:none; color:var(--color3); }
+.open{ display:flex; }
+.close{ display:none; }
+
+/* ---------- Content offset ---------- */
+/* Niet onder header vallen; géén vaste linker marge meer */
+main, .form-page{
+    padding-top:calc(var(--header-h) + var(--gap));
+    padding-left:16px;
+    padding-right:16px;
 }
 
-.form-container h1 {
-    text-align: center;
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
-    color: var(--color2);
-    font-weight: bold;
+/* ---------- Formulierpagina ---------- */
+.form-page{
+    display:flex;                 /* centreren van de kaart */
+    justify-content:center;
+    align-items:center;
+    gap:var(--gap);
+    padding-bottom:24px;
 }
 
-/* ====== Inputs ====== */
-label {
-    display: block;
-    margin-bottom: 0.5rem;
-    font-weight: bold;
-    color: var(--color7);
+/* ---------- Form container ---------- */
+.form-container{
+    background:#fff;
+    padding:2rem 3rem;
+    border-radius:12px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.15);
+    max-width:600px;
+    width:100%;
+    border:3px solid var(--color1);
+    animation:fadeIn .5s ease-in-out;
+    margin:2rem 0;               /* headeroffset regelt de top-ruimte */
 }
 
+@keyframes fadeIn{
+    from{ opacity:0; transform:translateY(20px); }
+    to{ opacity:1; transform:translateY(0); }
+}
+
+.form-container h1{
+    text-align:center;
+    font-size:2rem;
+    margin-bottom:1.5rem;
+    color:var(--color2);
+    font-weight:bold;
+}
+
+/* ---------- Inputs ---------- */
+label{
+    display:block;
+    margin-bottom:.5rem;
+    font-weight:bold;
+    color:var(--color7);
+}
 input[type="text"],
 input[type="number"],
-textarea {
-    width: 100%;
-    padding: 0.9rem;
-    margin-bottom: 1.2rem;
-    border: 2px solid var(--color6);
-    border-radius: 8px;
-    font-size: 1rem;
-    font-family: inherit;
-    transition: border-color .3s, background .3s, box-shadow .3s;
-    background: var(--color3);
+textarea,
+select{
+    width:100%;
+    padding:.9rem;
+    margin-bottom:1.2rem;
+    border:2px solid var(--color6);
+    border-radius:8px;
+    font-size:1rem;
+    font-family:inherit;
+    transition:border-color .3s, background .3s, box-shadow .3s;
+    background:var(--color3);
 }
-
 input[type="text"]:focus,
 input[type="number"]:focus,
-textarea:focus {
-    outline: none;
-    border-color: var(--color1);
-    background: #fff;
-    box-shadow: 0 0 6px rgba(44,110,73,.3);
+textarea:focus,
+select:focus{
+    outline:none;
+    border-color:var(--color1);
+    background:#fff;
+    box-shadow:0 0 6px rgba(44,110,73,.3);
 }
+textarea{ resize:vertical; }
 
-textarea { resize: vertical; }
-
-/* ====== Knop ====== */
-button {
-    display: block;
-    width: 100%;
-    padding: 1rem;
-    font-size: 1rem;
-    font-weight: bold;
-    background: var(--color1);
-    color: #fff;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background .3s, transform .2s;
+/* ---------- Knop ---------- */
+button{
+    display:block;
+    width:100%;
+    padding:1rem;
+    font-size:1rem;
+    font-weight:bold;
+    background:var(--color1);
+    color:#fff;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+    transition:background .3s, transform .2s;
 }
+button:hover{ background:var(--color2); transform:scale(1.02); }
 
-button:hover { background: var(--color2); transform: scale(1.02); }
-
-/* ====== Meldingen ====== */
-.message {
-    margin-bottom: 1rem;
-    padding: 0.8rem;
-    border-radius: 6px;
-    font-weight: bold;
-    text-align: center;
+/* ---------- Meldingen ---------- */
+.message{
+    margin-bottom:1rem;
+    padding:.8rem;
+    border-radius:6px;
+    font-weight:bold;
+    text-align:center;
 }
-.message.success { background:#d4edda; color:#155724; border:2px solid #c3e6cb; }
-.message.error   { background:#f8d7da; color:#721c24; border:2px solid #f5c6cb; }
+.message.success{ background:#d4edda; color:#155724; border:2px solid #c3e6cb; }
+.message.error{   background:#f8d7da; color:#721c24; border:2px solid #f5c6cb; }
 
 /* Link onder het formulier */
-.form-container a {
-    display: inline-block;
-    margin-top: 1rem;
-    text-align: center;
-    color: var(--color1);
-    font-weight: bold;
-    transition: color .3s;
+.form-container a{
+    display:inline-block;
+    margin-top:1rem;
+    text-align:center;
+    color:var(--color1);
+    font-weight:bold;
+    transition:color .3s;
 }
-.form-container a:hover { color: var(--color2); }
+.form-container a:hover{ color:var(--color2); }
 
-/* ====== Responsiveness ====== */
-
-/* Tablets en kleine laptops */
-@media (max-width: 768px) {
-    body { align-items: flex-start; }        /* voorkomt te veel vertical centering op kleine schermen */
-    .form-container {
-        margin: 1.25rem;
-        padding: 1.5rem 1.25rem;
-        max-width: 520px;
-    }
-    .form-container h1 { font-size: 1.6rem; }
-    input[type="text"],
-    input[type="number"],
-    textarea { font-size: .98rem; padding: 0.8rem; }
-    button { padding: 0.9rem; font-size: .98rem; }
+/* ---------- Responsive ---------- */
+@media (max-width: 900px){
+    #navList{ width:80vw; }        /* slide-out breder op mobiel/tablet */
 }
-
-/* Telefoons */
-@media (max-width: 480px) {
-    .form-container {
-        margin: 0.75rem;
-        padding: 1rem 0.9rem;
-        border-width: 2px;
-        border-radius: 10px;
-        box-shadow: 0 6px 16px rgba(0,0,0,.12);
+@media (max-width: 768px){
+    nav img{ width:56px; }
+    .form-container{
+        margin:1.25rem 0;
+        padding:1.5rem 1.25rem;
+        max-width:520px;
     }
-    .form-container h1 { font-size: 1.35rem; margin-bottom: 1rem; }
-    label { font-size: .95rem; }
-    input[type="text"],
-    input[type="number"],
-    textarea {
-        font-size: .95rem;
-        padding: 0.75rem;
-        margin-bottom: 1rem;
+    .form-container h1{ font-size:1.6rem; }
+    input[type="text"], input[type="number"], textarea, select{
+        font-size:.98rem; padding:.8rem;
     }
-    button { padding: 0.85rem; font-size: .95rem; border-radius: 7px; }
-    .message { font-size: .95rem; }
+    button{ padding:.9rem; font-size:.98rem; }
+}
+@media (max-width: 480px){
+    nav{ left:12px !important; top:10px !important; }
+    .form-container{
+        margin:.75rem 0;
+        padding:1rem .9rem;
+        border-width:2px;
+        border-radius:10px;
+        box-shadow:0 6px 16px rgba(0,0,0,.12);
+    }
+    .form-container h1{ font-size:1.35rem; margin-bottom:1rem; }
+    label{ font-size:.95rem; }
+    input[type="text"], input[type="number"], textarea, select{
+        font-size:.95rem; padding:.75rem; margin-bottom:1rem;
+    }
+    button{ padding:.85rem; font-size:.95rem; border-radius:7px; }
+    .message{ font-size:.95rem; }
 }
 
-.redirect-wrap { margin: 1rem 0; }
-.redirect-wrap .msg { text-align: center; font-weight: bold; margin-bottom: .5rem; }
-.redirect-wrap .bar { height: 8px; background: #eee; border-radius: 6px; overflow: hidden; }
-.redirect-wrap #barFill { height: 100%; width: 0; background: var(--color1); transition: width .05s linear; }
+/* ---------- Redirect bar (optioneel) ---------- */
+.redirect-wrap{ margin:1rem 0; }
+.redirect-wrap .msg{ text-align:center; font-weight:bold; margin-bottom:.5rem; }
+.redirect-wrap .bar{ height:8px; background:#eee; border-radius:6px; overflow:hidden; }
+#barFill{ height:100%; width:0; background:var(--color1); transition:width .05s linear; }

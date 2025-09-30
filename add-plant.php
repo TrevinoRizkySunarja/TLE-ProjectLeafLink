@@ -151,9 +151,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8" />
     <title>LeafLink - Plant toevoegen</title>
+    <link rel="stylesheet" href="Includes/CSS/style.css">
     <link rel="stylesheet" href="Includes/CSS/add-plant.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <script src="Includes/JS/add-plant.js" defer></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <style>
         .redirect-wrap { margin:1rem 0; }
         .redirect-wrap .msg { text-align:center; font-weight:bold; margin-bottom:.5rem; }
@@ -161,7 +162,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         #barFill { height:100%; width:0; background:var(--color1,#7da44d); transition: width .05s linear; }
     </style>
 </head>
-<body>
+<body class="page-add-plant">
+<header>
+    <?php include 'Includes/nav.php'; ?>
+    <h1 id="headerH1">Home</h1>
+</header>
+<main class="form-page">
 <div class="form-container">
     <h1>Nieuwe plant toevoegen</h1>
     <?php
@@ -209,5 +215,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <a href="index.php">← Terug naar overzicht</a>
     </div>
 </div>
+</main>
 </body>
 </html>
