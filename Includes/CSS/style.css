@@ -103,11 +103,13 @@ header a {
 }
 
 /* ---------------- Nav (hamburger in header) ---------------- */
-nav {
+nav{
+    z-index: 1001;
     position: absolute;
     left: 3vw;
     top: 1.5vh;
-    z-index: 1001; /* boven de header-content */
+
+
 }
 
 nav img {
@@ -115,8 +117,8 @@ nav img {
     height: 6vh; /* hamburger-grootte */
 }
 
-/* Slide-out menu start onder de header */
-#navList {
+/* Slide-out menu onder de header */
+#navList{
     position: fixed;
     top: 0;
     left: 0;
