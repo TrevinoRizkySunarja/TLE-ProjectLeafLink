@@ -210,10 +210,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body class="page-add-plant">
 <?php include 'Includes/nav.php'; ?>
-<header>
-
-    <h1 id="headerH1">Home</h1>
-</header>
+<?php include 'Includes/hoofd.php'; ?>
 <main class="form-page">
     <div class="form-container">
         <h1>Nieuwe plant toevoegen</h1>
