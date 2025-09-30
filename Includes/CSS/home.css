@@ -28,10 +28,17 @@
     width: 80%;
     margin: 0 auto;
     gap: 2vw;
+    text-align: center;
+    justify-content: center;
 }
 
 #badges img {
-    max-width: 50vw;
+    max-width: 25vw;
+}
+
+#noBadge {
+    width: 100%;
+    text-align: center;
 }
 
 #FavoritePlantsSec {
@@ -51,9 +58,9 @@
 }
 
 .shelf img {
-    max-height: 10vh;
+    max-height: 13vh;
     width: auto;
-    padding: 2vh 0 7vh 0;
+    padding: 2vh 0 6vh 0;
     /*padding: 0 0 7vh 7vw;*/
 }
 
