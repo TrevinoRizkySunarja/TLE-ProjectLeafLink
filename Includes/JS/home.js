@@ -1,5 +1,3 @@
-// import {openMenu, closeMenu} from "./menu";
-
 document.addEventListener("click", (e) => clickHandler(e));
 window.addEventListener("load", loadPage);
 

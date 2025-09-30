@@ -12,12 +12,19 @@ if (isset($_POST['submit'])) {
     if ($username == '') {
         $errors['username'] = 'Gebruikersnaam vereist.';
     }
+    
     if ($password == '') {
-        $errors['password'] = 'Wachtwoord vereist.';
+    $errors['password'] = 'Wachtwoord vereist.';
+    } elseif (strlen($password) < 8) {
+    $errors['password'] = 'Wachtwoord moet minimaal 8 tekens bevatten.';
     }
+    
     if ($email == '') {
-        $errors['email'] = 'E-mail vereist.';
+    $errors['email'] = 'E-mail vereist.';
+    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    $errors['email'] = 'Ongeldig e-mailadres.';
     }
+    
 
     if (empty($errors)) {
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
@@ -51,7 +58,6 @@ if (isset($_POST['submit'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./Includes/CSS/login.css">
     <title>Registratie</title>
 </head>
 <body>

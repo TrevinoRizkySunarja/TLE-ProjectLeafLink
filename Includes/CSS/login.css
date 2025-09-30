@@ -1,4 +1,38 @@
-button {
-    width: 50px;
-    height: 50px;
+
+body {
+    margin: 0;
+    background-image: none;
+    background-color: var(--color4);
 }
+
+input {
+    width: 70vw;
+    height: 3vh;
+    border: var(--color7) solid 2px;
+    background-color: var(--color5);
+    color: white;
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 30vh;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+}
+
+.button-link button, a {
+    border: var(--color7) solid 2px;
+    background-color: var(--color6);
+    color: white;
+    flex: 1;
+}
+
