@@ -64,7 +64,7 @@ header{
     padding:0 var(--gap);
     text-align:center;
 }
-header a{ color:#fff; text-decoration:none; font-weight:bold; }
+header a{ color:#fff; text-decoration:none; font-weight:normal; }
 
 /* ---------- Nav: HAMBURGER IN DE HEADER ---------- */
 /* Alleen de knop (nav) hangt nu in de header linksboven */

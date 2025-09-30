@@ -184,7 +184,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <option value="">Selecteer Soort</option>
             <option value="cactus1">Bloeiende Cactus</option>
             <option value="cactus2">Cactus</option>
-            <option value="fatpant">Vetplant</option>
+            <option value="fatplant">Vetplant</option>
             <option value="floweredplant">Bloemen</option>
         </select>
 
@@ -192,18 +192,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <select id="watering" name="watering" required>
             <option value="">Selecteer water behoeften</option>
             <option value="frequent">Frequent</option>
-            <option value="average">Gemiddeld</option>
-            <option value="minimum">Minimaal</option>
-            <option value="none">Geen</option>
+            <option value="gemiddeld">Gemiddeld</option>
+            <option value="minimaal">Minimaal</option>
+            <option value="geen">Geen</option>
         </select>
 
         <label for="sunlight">Lichtbehoeften:</label>
         <select id="sunlight" name="sunlight" required>
             <option value="">Selecteer lichtbehoeften</option>
-            <option value="full_sun">Vol zonlicht</option>
-            <option value="part_shade">Halfschaduw</option>
-            <option value="full_shade">Volledige schaduw</option>
-            <option value="part_sun">Deels zonlicht</option>
+            <option value="volle-zonlicht">Vol zonlicht</option>
+            <option value="Halfschaduw">Halfschaduw</option>
+            <option value="volle-schaduw">Volledige schaduw</option>
+            <option value="Deels-zonlicht">Deels zonlicht</option>
         </select>
 
         <label for="info">Beschrijving:</label>

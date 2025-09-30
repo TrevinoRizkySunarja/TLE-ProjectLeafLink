@@ -6,8 +6,8 @@
     src: url("../fonts/Lazytype-1jz0Z.ttf");
 }
 
-* {
-    /*Color palette*/
+/* ---------------- Vars ---------------- */
+:root{
     --color1: #7da44d;
     --color2: #3e5e2a;
     --color3: #fff4e3;
@@ -15,63 +15,15 @@
     --color5: #945e3c;
     --color6: #737373;
     --color7: #41535d;
+
+    --header-h: 88px;     /* vaste headerhoogte site-breed */
+    --gap: 24px;
+    --tiles-size: 125%;
 }
 
-h1 {
-    font-family: "Fredoka", sans-serif;
-    font-size: 2.5rem;
-    font-weight: bold;
-}
-
-h2 {
-    font-family: "Fredoka", sans-serif;
-    font-size: 2rem;
-}
-
-h4 {
-    font-family: Lazytype, sans-serif;
-    font-size: 1.5rem;
-    font-weight: normal;
-}
-
-nav {
-    width: 11vw;
-    position: absolute;
-    top: 20px;
-    left: 15px;
-    z-index: 999;
-    min-height: 100vh;
-}
-
-nav img {
-    width: 100%;
-}
-
-#navList {
-    width: 40vw;
-    padding: 3vh 1vw;
-    background: var(--color2);
-    position: fixed;
-    top: 0;
-    left: 0;
-    text-align: center;
-    flex-direction: column;
-    gap: 2vh;
-    height: 100%;
-}
-
-nav a {
-    text-decoration: none;
-    color: var(--color3);
-}
-
-.open {
-    display: flex;
-}
-
-.close {
-    display: none;
-}
+/* ---------------- Base ---------------- */
+* { box-sizing: border-box; }
+html, body { height: 100%; }
 
 body {
     background: var(--color3);
@@ -79,22 +31,88 @@ body {
     background-repeat: repeat-y;
     background-position: center;
     background-attachment: fixed;
-    background-size: 125%;
+    background-size: var(--tiles-size);
+    margin: 0;
+    color: var(--color7);
+    font-family: "Fredoka", sans-serif;
 }
 
-header {
+/* Headings */
+h1 { font-family: "Fredoka", sans-serif; font-size: 2.5rem; font-weight: bold; }
+h2 { font-family: "Fredoka", sans-serif; font-size: 2rem; }
+h4 { font-family: Lazytype, sans-serif; font-size: 1.5rem; font-weight: normal; }
+
+/* ---------------- Header (fixed) ---------------- */
+header{
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: var(--header-h);
+    z-index: 1000;
     background: var(--color1);
-    padding: 2vh 0;
+    padding: 0 var(--gap);
+    display: flex;
+    align-items: center;
+    justify-content: center;   /* of space-between als je links/rechts items hebt */
     text-align: center;
     border-bottom: 5px solid #ABCFAE;
-    /*box-shadow: 0 15px 10px 1px;*/
+    box-shadow: 0 6px 18px rgba(0,0,0,.12);
+}
+header a { color: #fff; text-decoration: none; font-weight: bold; }
+
+/* ---------------- Nav (hamburger in header) ---------------- */
+nav{
+    position: fixed;
+    top: 12px;               /* ín de header */
+    left: 15px;
+    z-index: 1001;           /* boven de header-content */
+    width: auto;
+    min-height: auto;
+}
+nav img{
+    display: block;
+    width: 64px;             /* hamburger-grootte */
+    height: auto;
 }
 
-
-@media only screen and (max-width: 412px) {
-    /*Need to do more research into other common screen sizes so it won't break*/
-    /*ID's*/
-    /*classes*/
-
-
+/* Slide-out menu start onder de header */
+#navList{
+    position: fixed;
+    top: var(--header-h);
+    left: 0;
+    width: 40vw;
+    height: calc(100dvh - var(--header-h));
+    padding: 3vh 1vw;
+    background: var(--color2);
+    text-align: center;
+    flex-direction: column;
+    gap: 2vh;
+    overflow-y: auto;
 }
+nav a { text-decoration: none; color: var(--color3); }
+.open { display: flex; }
+.close { display: none; }
+
+/* ---------------- Page content offset ---------------- */
+/* voorkom dat content onder de (fixed) header valt */
+main{
+    padding-top: calc(var(--header-h) + var(--gap));
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+/* ---------------- Responsive ---------------- */
+@media (max-width: 900px){
+    #navList{ width: 80vw; }         /* breder slide-out op kleiner scherm */
+}
+
+@media (max-width: 768px){
+    nav img{ width: 56px; }
+}
+
+@media (max-width: 480px){
+    nav{ left: 12px; top: 10px; }
+}
+
+/* ---------------- (Optioneel) overige styles ---------------- */
+/* Zet hier je overige site-brede component-styles.
+   Laat nav/header-regels hierboven staan zodat gedrag overal consistent blijft. */
