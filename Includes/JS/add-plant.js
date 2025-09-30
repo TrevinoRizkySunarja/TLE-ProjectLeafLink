@@ -1,49 +1,42 @@
-window.addEventListener("load", init);
+// import {openMenu, closeMenu} from "./menu";
 
-function init() {
-    populateFormFromStorage();
+document.addEventListener("click", (e) => clickHandler(e));
+window.addEventListener("load", loadPage);
+
+let popup = document.getElementById("PlantStatusSec");
+let navList = document.getElementById("navList");
+
+function loadPage() {
+    let h1 = document.getElementById("headerH1");
+    h1.innerText = "Voeg plant toe!";
 }
 
-function populateFormFromStorage() {
-    let commonName = localStorage.getItem("plantToAdd_commonName");
-    let watering = localStorage.getItem("plantToAdd_watering");
-    let sunlight = localStorage.getItem("plantToAdd_sunlight");
-
-    if (commonName) {
-        document.getElementById("name").value = commonName;
+function clickHandler(e) {
+    if (e.target.classList.contains("favoritePlant")) {
+        openPopUp();
+    } else if (e.target.classList.contains(("closeButton"))) {
+        closePopUp();
+    } else if (e.target.id === "navButton") {
+        openMenu();
+    } else if (e.target.id !== "navButton" && navList.classList.contains("open")) {
+        closeMenu();
     }
+}
 
-    if (watering) {
-        let wateringMap = {
-            "Frequent": "frequent",
-            "Average": "average",
-            "Minimum": "minimum",
-            "None": "none"
-        };
+function openPopUp() {
+    popup.style.display = 'block';
+}
 
-        let mappedWatering = wateringMap[watering] || watering.toLowerCase();
-        document.getElementById("watering").value = mappedWatering;
-    }
+function closePopUp() {
+    popup.style.display = 'none';
+}
 
-    if (sunlight) {
-        // Handle sunlight array - take first value and map it
-        let sunlightMap = {
-            "full sun": "full_sun",
-            "part shade": "part_shade",
-            "full shade": "full_shade",
-            "part sun": "part_sun",
-            "partial shade": "part_shade",
-            "partial sun": "part_sun"
-        };
+function openMenu() {
+    navList.classList.remove("close");
+    navList.classList.add("open");
+}
 
-        // If sunlight is a comma-separated string, take the first value
-        let firstSunlight = sunlight.split(",")[0].trim().toLowerCase();
-        let mappedSunlight = sunlightMap[firstSunlight] || firstSunlight.replace(/\s+/g, "_");
-        document.getElementById("sunlight").value = mappedSunlight;
-    }
-
-    // Clear localStorage after populating
-    localStorage.removeItem("plantToAdd_commonName");
-    localStorage.removeItem("plantToAdd_watering");
-    localStorage.removeItem("plantToAdd_sunlight");
+function closeMenu() {
+    navList.classList.remove("open");
+    navList.classList.add("close");
 }

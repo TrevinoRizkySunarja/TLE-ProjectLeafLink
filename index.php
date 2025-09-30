@@ -6,10 +6,10 @@ require_once 'Includes/connectie.php';
 $id = $_SESSION['user']['owner_id'];
 
 //badges uit database halen
-$queryBadges = "SELECT * FROM badges WHERE owner_id = $id ORDER BY date_earned LIMIT 3";
+$queryBadges = "SELECT * FROM badges WHERE owner_id = $id ORDER BY date_earned DESC LIMIT 3";
 $resultBadges = mysqli_query($db, $queryBadges)
 or die('Error ' . mysqli_error($db) . ' with query ' . $queryBadges);
-$badges = [];
+//$badges = [];
 
 if (mysqli_num_rows($resultBadges) !== 0) {
     while ($row = mysqli_fetch_assoc($resultBadges)) {
@@ -53,9 +53,14 @@ if (mysqli_num_rows($resultPlants) !== 0) {
             <h2>Recente badges</h2>
         </div>
         <div id="badges">
-            <?php foreach ($badges as $index => $badge) { ?>
-                <!--linken naar de badgepage en de goeie badge laten zien-->
-                <a href=""><img src="Includes/images/firstplantBadge.png" alt=""></a>
+            <?php if ($badges == "Geen badges gevonden") { ?>
+                <p id="noBadge"><?= $badges ?></p>
+            <?php } else { ?>
+                <?php foreach ($badges as $index => $badge) { ?>
+                    <!--linken naar de badgepage en de goeie badge laten zien-->
+                    <a href="badges.php?badge=<?= $badge['badge_id'] ?>"><img
+                                src="Includes/images/<?= $badge['image'] ?>.png" alt=""></a>
+                <?php } ?>
             <?php } ?>
         </div>
     </section>
@@ -63,14 +68,17 @@ if (mysqli_num_rows($resultPlants) !== 0) {
         <div class="shelf">
             <?php foreach ($plants as $index => $plant) { ?>
                 <?php if ($index <= 2) { ?>
-                    <img id="<?= $plant['plant_id'] ?>" class="favoritePlant" src="Includes/images/cactus1.png" alt="">
+                    <img id="<?= $plant['plant_id'] ?>" class="favoritePlant"
+                         src="Includes/images/<?= $plant['species'] ?>.png" alt="">
                 <?php } ?>
             <?php } ?>
         </div>
         <div class="shelf">
             <?php foreach ($plants as $index => $plant) { ?>
                 <?php if ($index > 2) { ?>
-                    <img id="<?= $plant['plant_id'] ?>" class="favoritePlant" src="Includes/images/cactus1.png" alt="">
+                    <img id="<?= $plant['plant_id'] ?>" class="favoritePlant"
+                         src="Includes/images/<?= $plant['species'] ?>.png"
+                         alt="">
                 <?php } ?>
             <?php } ?>
         </div>

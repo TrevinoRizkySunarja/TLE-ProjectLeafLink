@@ -1,20 +1,21 @@
 <?php
 session_start();
-require_once 'Includes/connectie.php';
+require_once 'includes/connectie.php';
 
 if (isset($_SESSION['user'])) {
     $username = $_SESSION['user']['username'];
+    $userId = $_SESSION['user']['userId'];
 
-	$result = mysqli_query($db, "SELECT COUNT(*) as total FROM plants ");
+    $result = mysqli_query($db, "SELECT COUNT(*) as total FROM plants WHERE owner = '$userId' ");
     $row = mysqli_fetch_assoc($result);
     $plantCount = $row['total'];
 
-	$result = mysqli_query($db, "SELECT COUNT(*) as total FROM badges");
+    $result = mysqli_query($db, "SELECT COUNT(*) as total FROM badges");
     $row = mysqli_fetch_assoc($result);
     $badgeCount = $row['total'];
 } else {
     $username = "username"; // tijdelijke naam
-	$plantCount = 0;   	
+    $plantCount = 0;
 }
 
 if (isset($_GET['search'])) {
@@ -36,55 +37,56 @@ if (isset($_GET['search'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="Includes/CSS/profiel.css">
-	<link rel="stylesheet" href="Includes/CSS/style.css">
-	<script src="Includes/JS/profiel.js" defer></script>
+    <link rel="stylesheet" href="Includes/CSS/style.css">
+    <script src="Includes/JS/profiel.js" defer></script>
+    <script src="Includes/JS/menu.js" defer></script>
     <title>Profiel</title>
 </head>
 <body>
-
+<?php include 'Includes/nav.php'; ?>
 
 <header>
-	<h1>Profiel</h1>
+    <h1>Profiel</h1>
 
-</header> 
+</header>
 
 <main>
     <section class="profile-info">
-	<div class="avatar-container">
-		<img src="Includes/images/profile.png" >
-		<div class="profile-username">
-    @<?php echo htmlspecialchars($username); ?>
+        <div class="avatar-container">
+            <img src="Includes/images/profile.png" >
+            <div class="profile-username">
+                @<?php echo htmlspecialchars($username); ?>
+            </div>
         </div>
-</div>
-		<div class="pnb">
-        <h3><?= $plantCount . " "?>Plants</h3>
-        <!-- <h3><?= $badgeCount . " "?>Badges</h3>      -->
-		<h3>3 Badges</h3>    
-</div>
-</section>
-<section class="manage-plants">
+        <div class="pnb">
+            <h3><?= $plantCount . " "?>Plants</h3>
+            <!-- <h3><?= $badgeCount . " "?>Badges</h3>      -->
+            <h3>3 Badges</h3>
+        </div>
+    </section>
+    <section class="manage-plants">
         <a href="add-plant.php">Add Plant</a>
-		<div class="search-wrapper">
-		<input type="text" id="zoekInvoer" placeholder="Search Plant...">
-		<div id="searchDropdown"></div>
-</div>
-</section>
+        <div class="search-wrapper">
+            <input type="text" id="zoekInvoer" placeholder="Search Plant...">
+            <div id="searchDropdown"></div>
+        </div>
+    </section>
 
-<section class="my-plants">
-	<div class="board">
-    <h2>My Plants</h2>
-</div>
-    
-    <div class="shelf">
-    <!-- insert plants -->
- </div>
- <div class="shelf">
-    <!-- insert plants -->
- </div>
- 
-</section>
+    <section class="my-plants">
+        <div class="board">
+            <h2>My Plants</h2>
+        </div>
 
-        
+        <div class="shelf">
+            <!-- insert plants -->
+        </div>
+        <div class="shelf">
+            <!-- insert plants -->
+        </div>
+
+    </section>
+
+
 </main>
 
 </body>
