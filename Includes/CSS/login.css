@@ -5,13 +5,29 @@ body {
     background-color: #e8cda2;
 }
 
+h1 {
+    font-size: 2.5rem;
+    text-align: center;
+}
+
+header a {
+    background: none;
+    border: none;
+}
+
 input {
     width: 70vw;
     height: 3vh;
     border: var(--color7) solid 2px;
+    border-radius: 10px;
     background-color: var(--color5);
     color: white;
     text-align: center;
+}
+
+label, button {
+  font-family: Fredoka;
+  src: url('https://fonts.googleapis.com/css2?family=Fredoka&display=swap');
 }
 
 form {
@@ -29,13 +45,23 @@ form {
     justify-content: space-between;
     align-items: center;
     flex-direction: row;
+    gap: 40vw;
+}
+
+#tile-container {
+    position: relative;
+    width: 100vw;
+    margin-top: 25vh;
 }
 
 .button-link button, a {
     border: var(--color7) solid 2px;
-    background-color: var(--color6);
-    color: white;
+    background-color: var(--color4);
+    color: black;
+    width: 80px;
+    height: 40px;
     flex: 1;
+    display: inline-block;
 }
 
 .shelf-container {
@@ -47,12 +73,13 @@ form {
 
 .shelf {
     background-image: url("../images/shelf.png");
-    background-size: contain;
+    background-size: cover;
     background-repeat: no-repeat;
     width: 100vw;
     height: 10vh;
     position: absolute;
     bottom: 0;
+    z-index: 1;
 }
 
 .books {
@@ -60,10 +87,11 @@ form {
     background-size: contain;
     background-repeat: no-repeat;
     background-position: bottom;
-    width: 20vw;
+    width: 33vw;
     height: 15vh;
     position: absolute;
-    bottom: 10vh; 
+    bottom: 8vh; 
+    z-index: 1;
 }
 
 .cat {
@@ -74,19 +102,32 @@ form {
     width: 120vw;
     height: 13vh;
     position: absolute;
-    bottom: 7vh;
+    bottom: 5vh;
+    z-index: 1;
 }
 
 .tiles {
     background-image: url("../images/tiles.png");
-    background-size: auto 200%;
+    background-size: auto 150%;
     background-repeat: repeat-x;
     background-position: bottom;
     width: 100vw;
-    height: 8vh;
+    height: 30vh;
     position: absolute;
     bottom: 0;
     z-index: 0; 
+}
+
+.bottom-plants {
+     background-image: url("../images/plantsbottompage.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    width: 120vw;
+    height: 30vh;
+    position: absolute;
+    bottom: 0vh;
+    z-index: 1;
 }
 
 
