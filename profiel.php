@@ -75,14 +75,14 @@ if (mysqli_num_rows($resultPlants) !== 0) {
 <main>
     <section class="profile-info">
         <div class="avatar-container">
-            <img src="Includes/images/profile.png" >
+            <img src="Includes/images/profile.png">
             <div class="profile-username">
                 @<?php echo htmlspecialchars($username); ?>
             </div>
         </div>
         <div class="pnb">
-            <h3><?= $plantCount . " "?>Plants</h3>
-             <h3 id="badges"><?= $badgeCount . " "?>Badges</h3>
+            <h3><?= $plantCount . " " ?>Plants</h3>
+            <h3 id="badges"><?= $badgeCount . " " ?>Badges</h3>
 
         </div>
     </section>
@@ -105,9 +105,10 @@ if (mysqli_num_rows($resultPlants) !== 0) {
             <?php } else { ?>
                 <?php foreach ($plants1 as $index => $plant) { ?>
                     <?php if ($index <= 2) { ?>
-                        <img class="favoritePlant"
-                             src="Includes/images/<?= $plant['species'] ?>.png"
-                             alt="">
+                        <a href="my-plant.php?id=<?= $plant['plant_id'] ?>">
+                            <img class="favoritePlant"
+                                 src="Includes/images/<?= $plant['species'] ?>.png"
+                                 alt=""></a>
                     <?php } ?>
                 <?php } ?>
             <?php } ?>
@@ -118,9 +119,10 @@ if (mysqli_num_rows($resultPlants) !== 0) {
             <?php } else { ?>
                 <?php foreach ($plants1 as $index => $plant) { ?>
                     <?php if ($index > 2) { ?>
-                        <img class="favoritePlant"
-                             src="Includes/images/<?= $plant['species'] ?>.png"
-                             alt="">
+                        <a href="my-plant.php?id=<?= $plant['plant_id'] ?>">
+                            <img class="favoritePlant"
+                                 src="Includes/images/<?= $plant['species'] ?>.png"
+                                 alt=""></a>
                     <?php } else if ($index == 0) { ?>
                         <p class="noPlants">Voeg planten toe om ze hier te zien!</p>
                     <?php } ?>
