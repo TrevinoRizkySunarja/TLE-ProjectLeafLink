@@ -25,7 +25,8 @@ if (isset($_SESSION['user'])) {
 
 if (isset($_GET['search'])) {
     $term = mysqli_real_escape_string($db, $_GET['search']);
-    $result = mysqli_query($db, "SELECT name FROM plants WHERE name LIKE '%$term%'");
+    $userId = $_SESSION['user']['owner_id'];
+    $result = mysqli_query($db, "SELECT name FROM plants WHERE name LIKE '%$term%' AND owner_id = '$userId'");
     $plants = [];
     while ($row = mysqli_fetch_assoc($result)) {
         $plants[] = $row['name'];
@@ -74,14 +75,14 @@ if (mysqli_num_rows($resultPlants) !== 0) {
 <main>
     <section class="profile-info">
         <div class="avatar-container">
-            <img src="Includes/images/profile.png">
+            <img src="Includes/images/profile.png" >
             <div class="profile-username">
                 @<?php echo htmlspecialchars($username); ?>
             </div>
         </div>
         <div class="pnb">
-            <h3><?= $plantCount . " " ?>Plants</h3>
-            <h3><?= $badgeCount . " " ?>Badges</h3>
+            <h3><?= $plantCount . " "?>Plants</h3>
+             <h3 id="badges"><?= $badgeCount . " "?>Badges</h3>
 
         </div>
     </section>
