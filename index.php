@@ -118,9 +118,6 @@ if (isset($_GET['id'])) {
         </section>
     <?php } ?>
     <section id="plantFacts">
-        <div class="border">
-            <h2>Feitjes</h2>
-        </div>
         <div id="plantFactContent">
             <!-- Feitjes komen hier dynamisch via JS -->
         </div>
