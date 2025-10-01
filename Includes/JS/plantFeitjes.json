@@ -1,7 +1,12 @@
 {
   "data": [
     {
-      "name": "Yippee"
+      "name": "Bananenplant",
+      "info": "Een bananenplant kan in goeie omstandigheden 12cm groeien in een week."
+    },
+    {
+      "name": "Tomatenplant",
+      "info": "Als je een kleine tomatenplant zonder vruchten voor een aantal dagen geen water geeft gaat hij sneller tomaten groeien."
     }
   ]
 }
