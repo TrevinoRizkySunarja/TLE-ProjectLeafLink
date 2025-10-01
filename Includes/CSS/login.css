@@ -44,6 +44,12 @@ form {
     gap: 3vh;
 }
 
+.help.is-danger {
+    min-height: 1.2rem; /* of een andere hoogte passend bij je font */
+    color: red;
+    font-size: 0.8rem;
+}
+
 .button-container {
     display: flex;
     justify-content: space-between;
