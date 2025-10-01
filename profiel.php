@@ -66,7 +66,7 @@ if (isset($_GET['search'])) {
         </div>
         <div class="pnb">
             <h3><?= $plantCount . " "?>Plants</h3>
-             <h3><?= $badgeCount . " "?>Badges</h3>
+             <h3 id="badges"><?= $badgeCount . " "?>Badges</h3>
 
         </div>
     </section>
