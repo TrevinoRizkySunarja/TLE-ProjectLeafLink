@@ -7,7 +7,6 @@
         <a href="index.php">Home</a>
         <a href="archief.php">Planten archief</a>
         <a href="add-plant.php">Voeg plant toe</a>
-        <a href="my-plant.php">Mijn plant</a>
         <a href="logout.php">Logout</a>
     </div>
 </nav>
