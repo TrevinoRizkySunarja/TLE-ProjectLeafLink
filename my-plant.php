@@ -1,4 +1,33 @@
 <?php
+//🐘
+
+
+require_once 'Includes/connectie.php';
+// $plantId = $_GET['plant_id']; //undo this once an idea is passed on to the next page
+$plantId = 1; //so this is now temporary
+
+/** @var mysqli $db
+ */
+
+
+
+$query = "SELECT * FROM `plants` WHERE plant_id='$plantId'";
+
+$result = mysqli_query($db, $query)
+or die ('Errror ' . mysqli_error($db) . ' with query ' . $query);
+
+$plantData = [];
+
+while ($row = mysqli_fetch_assoc($result)) {
+    $plantData[] = $row;
+}
+
+//these are tests for data
+// echo var_dump($plantData);
+// echo var_dump($plantData[$plantId - 1]['name']);
+
+$plantId = $plantId - 1; //yes it's not okay and it's cheap but there's no other way ;w;
+mysqli_close($db);
 ?>
 
 <!DOCTYPE html>
@@ -10,12 +39,13 @@
     <link rel="stylesheet" href="Includes/CSS/style.css">
     <link rel="stylesheet" href="Includes/CSS/my-plant.css">
     <script src="Includes/JS/my-plant.js" defer></script>
-    <title>My plant</title>
+    <title>My plant - <?= $plantData[$plantId]['name'] ?></title>
 </head>
 
 <body>
+<!--check if the data isset 🐘-->
     <header>
-        My plant
+        My plant - <?= $plantData[$plantId]['name'] ?>
     </header>
     <main>
         <!--Pop up-->
@@ -30,23 +60,21 @@
         </div>
 
         <div id="tempAndAlarm">
-            <span>21</span>
+            <span>21°</span>
             <img src="Includes/images/alarmchoice_inactive.png" alt="alarm settings button" id="btnAlarmSet">
             <img src="Includes/images/waterplant.png" alt="temporary water plant button" id="btnWaterPlant">
         </div>
-        <div id="plant"> <!--plant image-->
-            <!--tag-->
-            <img src="Includes/images/digitalPlant.png" alt="" id="plantImg"> <!--plant-->
-            <!--chair-->
+        <div id="plant"> 
+            <img src="Includes/images/digitalPlant.png" alt="" id="plantImg">
         </div>
         <div id="infoBlock">
             <img src="Includes/images/woodtexture.png" id="woodTexture">
-            <h2 id="plantName">Joyce</h2>
+            <h2 id="plantName"><?= $plantData[$plantId]['name'] ?></h2> 
             <div id="information">
-                <span id="species">Species</span>
-                <span id="status">Status</span>
-                <span id="userDescription">Description blah blah blahblah blah blahblah blah blahblah blah blahblah blah blah blah blah blahblah blah blahblah blah blah blah blah blah</span>
-                <span id="info">Info plant</span>
+                <span id="species"><?= $plantData[$plantId]['species'] ?></span>
+                <span id="status">Status: Healthy</span> <!--Change via javascript-->
+                <span id="userDescription"><?= $plantData[$plantId]['notes'] ?></span>
+                <span id="info">Info plant</span> <!--get from result link to plant 🐘-->
             </div>
             <div id="interaction">
                 <div id="alarmBtns">
