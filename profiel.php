@@ -25,7 +25,8 @@ if (isset($_SESSION['user'])) {
 
 if (isset($_GET['search'])) {
     $term = mysqli_real_escape_string($db, $_GET['search']);
-    $result = mysqli_query($db, "SELECT name FROM plants WHERE name LIKE '%$term%'");
+    $userId = $_SESSION['user']['owner_id'];
+    $result = mysqli_query($db, "SELECT name FROM plants WHERE name LIKE '%$term%' AND owner_id = '$userId'");
     $plants = [];
     while ($row = mysqli_fetch_assoc($result)) {
         $plants[] = $row['name'];
