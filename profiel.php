@@ -3,6 +3,7 @@
 session_start();
 require_once 'includes/connectie.php';
 
+
 if (isset($_SESSION['user'])) {
     $username = $_SESSION['user']['username'];
     $userId = $_SESSION['user']['owner_id'];
@@ -11,13 +12,13 @@ if (isset($_SESSION['user'])) {
     $row = mysqli_fetch_assoc($result);
     $plantCount = $row['total'];
 
-    $result = mysqli_query($db, "SELECT COUNT(*) as total FROM badges");
+    $result = mysqli_query($db, "SELECT COUNT(*) as total FROM badges WHERE owner_id = '$userId' ");
     $row = mysqli_fetch_assoc($result);
     $badgeCount = $row['total'];
-} else {
-    $username = "username"; // tijdelijke naam
-    $userId = 0;            // zodat er geen error komt
-    $plantCount = 0;        // default waarde
+} else { //tijdelijk
+    $username = "username";
+    $userId = 0;
+    $plantCount = 0;
     $badgeCount = 0;
 
 }
@@ -53,7 +54,6 @@ if (isset($_GET['search'])) {
 <header>
     <h1>Profiel</h1>
 
-
 </header>
 
 <main>
@@ -66,8 +66,8 @@ if (isset($_GET['search'])) {
         </div>
         <div class="pnb">
             <h3><?= $plantCount . " "?>Plants</h3>
-            <!-- <h3><?= $badgeCount . " "?>Badges</h3>      -->
-            <h3>3 Badges</h3>
+             <h3><?= $badgeCount . " "?>Badges</h3>
+
         </div>
     </section>
     <section class="manage-plants">
