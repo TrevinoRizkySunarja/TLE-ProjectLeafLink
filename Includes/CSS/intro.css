@@ -14,11 +14,12 @@ body {
     background-attachment: fixed;
     background-size: 125%;
     overflow: hidden; /* Hide scrollbars */
+
 }
 
 .overlay {
     background:#fff;
-    padding:2rem 3rem;
+    padding-bottom: 30px;
     border-radius:12px;
     box-shadow:0 8px 20px rgba(0,0,0,0.15);
     max-width:600px;
@@ -36,9 +37,16 @@ body {
     width: 100%;
     height: auto;
 }
+
+h1 {
+    margin-top: 2rem;
+}
+
 p {
     color: #41535d;
     text-align: center;
+    padding: 15px;
+    margin-top: 0;
 }
 
 #step1 {
@@ -49,8 +57,10 @@ p {
 
 .nextbtn {
     background-color: #7da44d;
+
     padding: 15px 60px;
     margin-top: 20px;
+    font-family: 'Fredoka', sans-serif;
 }
 
 
