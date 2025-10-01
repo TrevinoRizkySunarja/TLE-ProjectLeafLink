@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Alan+Sans:wght@300..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka&display=swap');
+
+@font-face {
+    font-family: Lazytype;
+    src: url("../fonts/Lazytype-1jz0Z.ttf");
+}
+
+body {
+    background: var(--color3);
+    background-image: url("../images/tiles.png");
+    background-repeat: repeat-y;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: 125%;
+    overflow: hidden; /* Hide scrollbars */
+}
+
+.overlay {
+    background:#fff;
+    padding:2rem 3rem;
+    border-radius:12px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.15);
+    max-width:600px;
+    width:100%;
+    border:3px solid var(--color1);
+    animation:fadeIn .5s ease-in-out;
+    margin:2rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Fredoka', sans-serif;
+}
+
+.overlay img {
+    width: 100%;
+    height: auto;
+}
+p {
+    color: #41535d;
+    text-align: center;
+}
+
+#step1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.nextbtn {
+    background-color: #7da44d;
+    padding: 15px 60px;
+    margin-top: 20px;
+}
+
+
