@@ -20,7 +20,7 @@ if (isset($_GET['id'])) {
         header('Location: index.php');
         exit;
     }
-    
+
 } else {
     header('Location: index.php');
     exit;
@@ -55,7 +55,7 @@ mysqli_close($db);
 <!--check if the data isset 🐘-->
 <?php include 'Includes/nav.php'; ?>
 <header>
-    <h1>My plant - <?= $plantData['name'] ?></h1>
+    <h2>My plant - <?= $plantData['name'] ?></h2>
     <a href="profiel.php"><img src="Includes/images/profile.png" alt=""></a>
 </header>
 <main>
