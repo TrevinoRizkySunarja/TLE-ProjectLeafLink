@@ -135,6 +135,7 @@ nav img {
 nav a {
     text-decoration: none;
     color: var(--color3);
+    font-size: 1.2rem;
 }
 
 .open {
