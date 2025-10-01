@@ -1,4 +1,6 @@
 <?php
+header("Location: introscherm.php");
+exit;
 /** @var mysqli $db */
 require_once 'Includes/login_check.php';
 require_once 'Includes/connectie.php';
@@ -40,6 +42,8 @@ if (isset($_GET['id'])) {
 }
 
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
