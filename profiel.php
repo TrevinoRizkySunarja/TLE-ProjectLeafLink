@@ -50,6 +50,7 @@ if (mysqli_num_rows($resultPlants) !== 0) {
     $plants1 = "Voeg planten toe om ze hier te zien!";
 }
 
+
 ?>
 
 <!DOCTYPE html>

@@ -6,6 +6,8 @@
     src: url("../fonts/Lazytype-1jz0Z.ttf");
 }
 
+
+
 body {
     background: var(--color3);
     background-image: url("../images/tiles.png");
@@ -18,14 +20,13 @@ body {
 }
 
 .overlay {
-    background:#fff;
+    background: white;
     padding-bottom: 30px;
     border-radius:12px;
     box-shadow:0 8px 20px rgba(0,0,0,0.15);
     max-width:600px;
     width:100%;
     border:3px solid var(--color1);
-    animation:fadeIn .5s ease-in-out;
     margin:2rem 0;
     display: flex;
     flex-direction: column;
