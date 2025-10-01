@@ -48,6 +48,7 @@ mysqli_close($db);
     <link rel="stylesheet" href="Includes/CSS/style.css">
     <link rel="stylesheet" href="Includes/CSS/my-plant.css">
     <script src="Includes/JS/my-plant.js" defer></script>
+    <script src="Includes/JS/menu.js" defer></script>
     <title>My plant - <?= $plantData['name'] ?></title>
 </head>
 
@@ -55,7 +56,7 @@ mysqli_close($db);
 <!--check if the data isset 🐘-->
 <?php include 'Includes/nav.php'; ?>
 <header>
-    <h2>My plant - <?= $plantData['name'] ?></h2>
+    <h1>My plant</h1>
     <a href="profiel.php"><img src="Includes/images/profile.png" alt=""></a>
 </header>
 <main>
