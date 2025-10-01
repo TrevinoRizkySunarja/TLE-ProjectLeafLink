@@ -117,7 +117,14 @@ if (isset($_GET['id'])) {
             <img class="closeButton" src="Includes/images/close.png" alt="">
         </section>
     <?php } ?>
-    <section id="plantFacts"></section>
+    <section id="plantFacts">
+        <div class="border">
+            <h2>Feitjes</h2>
+        </div>
+        <div id="plantFactContent">
+            <!-- Feitjes komen hier dynamisch via JS -->
+        </div>
+    </section>
 </main>
 </body>
 </html>

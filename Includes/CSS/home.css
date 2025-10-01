@@ -79,7 +79,7 @@ img {
 }
 
 /*Plants info popup*/
-#PlantStatusSec {
+#PlantStatusSec, #plantFacts {
     background: #E9CDA2;
     border-top: 3px solid black;
     margin-top: 2vh;

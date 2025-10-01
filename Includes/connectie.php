@@ -4,6 +4,8 @@ $user = "root";
 $password = "";
 $database = "leafLink";
 
+// connection for projectspace
+
 //$host = "stud.hosted.hr.nl";
 //$user = "0998374";
 //$password = "gaeleeph";
