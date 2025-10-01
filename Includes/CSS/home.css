@@ -104,6 +104,11 @@ img {
     padding: 1vh 1vw;
 }
 
+p {
+    padding: 5px;
+    font-size: 1.1rem;
+}
+
 .closeButton {
     width: 7vw;
     position: absolute;
