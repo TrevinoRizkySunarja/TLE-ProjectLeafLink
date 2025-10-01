@@ -136,7 +136,6 @@ header {
     flex-direction: column;
     align-items: center;
     margin-top: 40px;
-
 }
 
 .board {
@@ -145,7 +144,6 @@ header {
     background-image: url("../images/noteplank.png");
     background-size: 100%;
     margin-top: 40px;
-
 }
 
 .shelf {
@@ -153,11 +151,28 @@ header {
     background-size: contain;
     background-repeat: no-repeat;
     background-position: bottom;
-    min-height: 120px;  /* geef ze ruimte zodat je ze ziet */
+    min-height: 120px; /* geef ze ruimte zodat je ze ziet */
     width: 80%;
     margin-top: 30px;
     display: flex;
+    justify-content: space-evenly;
+}
 
+.shelf img {
+    max-height: 18vh;
+    width: auto;
+    padding: 1vh 0 7vh 0;
+    /*padding: 0 0 7vh 7vw;*/
+}
+
+img {
+    width: 100%;
+}
+
+.noPlants {
+    padding-bottom: 13vh;
+    height: 10vh;
+    margin-top: 4vh;
 }
 
 

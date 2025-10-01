@@ -1,5 +1,6 @@
 const input = document.getElementById('zoekInvoer');
 const dropdown = document.getElementById('searchDropdown');
+document.getElementById('badges').addEventListener("click", goToAddBadges)
 
 input.addEventListener('input', async () => {
     const term = input.value.trim();
@@ -15,3 +16,7 @@ input.addEventListener('input', async () => {
 
     
 });
+
+function goToAddBadges() {
+    window.location.href = "add-badge.php";
+}
