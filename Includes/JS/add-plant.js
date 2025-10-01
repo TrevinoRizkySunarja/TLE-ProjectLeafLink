@@ -8,7 +8,7 @@ let navList = document.getElementById("navList");
 
 function loadPage() {
     let h1 = document.getElementById("headerH1");
-    h1.innerText = "Voeg plant toe!";
+    h1.innerText = "Nieuwe Plant";
     populateFormFromStorage();
 }
 
