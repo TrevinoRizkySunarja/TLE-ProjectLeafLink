@@ -14,7 +14,7 @@
 </head>
 <body>
 <main>
-    <div id="welcomeOverlay" class="overlay">
+    <div class="welkom-container">
             <div class="step" id="step1">
                 <img src="Includes/images/rowOfPlants.png">
                 <h1 id="titel">Welkom bij LeafLink! 🌱</h1>
@@ -23,19 +23,23 @@
             </div>
 
             <div class="step" id="step2">
-                <img src="Includes/images/monsterplant.png">
-                <h2>Ontdek!</h2>
+                <img src="Includes/images/uprightbooks.png">
+                <h1>Ontdek!</h1>
                 <p>Voeg je planten toe, verdien badges en beheer je planten makkelijk.</p>
+                <div class="button-container">
                 <button class="backbtn">Vorige</button>
                 <button class="nextbtn">Volgende</button>
+                </div>
         </div>
 
         <div class="step" id="step3">
-            <img src="Includes/images/plantBook.png">
-            <h2>Klaar om plantenexpert te worden? </h2>
+            <img src="Includes/images/monsterplant.png">
+            <h1>Ready? </h1>
             <p>Maak nu je LeafLink account aan!</p>
+            <div class="button-container">
             <button class="backbtn">Vorige</button>
             <button id="startBtn">Start</button>
+            </div>
         </div>
 
         <div id="stepIndicators">

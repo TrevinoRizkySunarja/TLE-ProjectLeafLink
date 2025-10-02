@@ -80,13 +80,15 @@ p {
 .nextbtn,
 .backbtn,
 #startBtn {
-    background-color: #7da44d;
-    padding: 15px 60px;
+    background-color: #7da44d;  /* standaardkleur */
+    padding: 15px 0;            /* verticale padding */
+    width: 200px;               /* vaste breedte voor alle buttons */
     font-family: 'Fredoka', sans-serif;
     border: none;
     border-radius: 8px;
     cursor: pointer;
     color: white;
+    text-align: center;
 }
 
 .backbtn {
@@ -98,6 +100,7 @@ p {
     margin-top: 20px;
 
 }
+
 
 .dot {
     height: 12px;
