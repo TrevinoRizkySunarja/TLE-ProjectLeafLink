@@ -1,4 +1,6 @@
+<?php
 
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -29,6 +31,7 @@
                 <p>Voeg je planten toe, verdien badges en beheer je planten makkelijk.</p>
                 <button id="startBtn">Start</button>
         </div>
+
     </div>
 
 </main>

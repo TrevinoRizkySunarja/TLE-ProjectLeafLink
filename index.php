@@ -1,11 +1,11 @@
 <?php
-header("Location: introscherm.php");
-exit;
 /** @var mysqli $db */
 require_once 'Includes/login_check.php';
 require_once 'Includes/connectie.php';
 
 $id = $_SESSION['user']['owner_id'];
+
+
 
 //badges uit database halen
 $queryBadges = "SELECT * FROM badges WHERE owner_id = $id ORDER BY date_earned DESC LIMIT 3";
