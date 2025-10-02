@@ -1,7 +1,7 @@
 window.onload = function(){
     //set up water timer
     goodState = true;
-    countDownTime = 100;
+    countDownTime = 20;
     runWaterTimer();
     initiate(); 
     preventScroll();
@@ -56,7 +56,7 @@ function preventScroll() {
 
 //reset time when plant has been watered
 function resetTime(){
-    countDownTime = 10;
+    countDownTime = 20;
     runWaterTimer();
 };
 
@@ -65,13 +65,14 @@ var waterPlant = setInterval(function() {
 
   var endTimer = 0;
   var distance = countDownTime - endTimer;
-  console.log(distance); //to check if the time is over in console
+  // console.log(distance); //to check if the time is over in console
 
   // If the count down is finished
   if (distance <= 0) {
     clearInterval(waterPlant);
     goodState = false;
     document.getElementById("plantImg").src = "Includes/images/plantDehidrated.png";
+    document.getElementById("status").innerText = "Status: Thirsty";
     showNotification(1);
   } else {
     countDownTime = countDownTime - 1;
@@ -83,6 +84,7 @@ var waterPlant = setInterval(function() {
 function userWaterPlant(){
     if (goodState == false){
         document.getElementById("plantImg").src = "Includes/images/digitalPlant.png";
+        document.getElementById("status").innerText = "Status: Healthy";
         goodState = true;
         resetTime();
     } else if (goodState == true){
@@ -155,7 +157,7 @@ function showNotification(notifyType) { //show notification
 
 /*alarm system*/
 function selectAlarms(){
-  if(editAlarms == false){ //for some reason it stores the press of the button and executes it once it's 'clickable'
+  if(editAlarms == false){
     editAlarms = true;
     document.getElementById("interaction").style.display = "block";
     document.getElementById("information").style.display = "none";
@@ -170,7 +172,7 @@ function selectAlarms(){
   } else{
     editAlarms = false;
     document.getElementById("interaction").style.display = "none";
-    document.getElementById("information").style.display = "flex"; //block missaligns everything
+    document.getElementById("information").style.display = "flex";
     document.getElementById("btnAlarmSet").src = "Includes/images/alarmchoice_inactive.png"
     document.getElementById("btnNotifWaterPlant").removeEventListener("click", waterplantAlarm);
     document.getElementById("btncChangePot").removeEventListener("click", changePotAlarm);
@@ -230,24 +232,3 @@ function changeLight(){
     notifications[0] = false;
   }
 }
-
-//(for each event listener) if pressed then bool true (for now) that they want to recieve notifications
-
-/* other settings */
-//event listener >> open up pop up with right options
-//add event listeners to all those elements if they are there otherwise don't (to prevent errors)
-/*setting types:
-> pot notifications 
-> information buttons (what a setting does) 
-> mute pot notifications
-> mute phone notifcations (no sound but still get a reminder)
-> sliders for how loud each notification type (behind it to mute it)*/
-
-/*other buttons*/
-//change pot >> change image to one different pot 
-//for prototype version 2 only change faces for each action of the pot, this will be an indivual image (just the face)
-
-/* Bonus: */
-//sounds that the pot makes over the phone
-//reminder notification to water it when on the page itself
-//Add API for action temprature measuring 

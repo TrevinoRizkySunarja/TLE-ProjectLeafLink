@@ -4,7 +4,7 @@ require_once 'Includes/login_check.php';
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
 
-/* --- connectie.php inladen --- */
+// connectie.php inladen
 $possibleConnectPaths = [
         __DIR__ . '/connectie.php',
         __DIR__ . '/includes/connectie.php',
@@ -27,7 +27,7 @@ if (!$loaded) {
     exit;
 }
 
-/* Ondersteun $db of $conn uit connectie.php */
+// Ondersteun $db of $conn uit connectie.php
 $mysqli = null;
 if (isset($db) && $db instanceof mysqli) $mysqli = $db;
 elseif (isset($conn) && $conn instanceof mysqli) $mysqli = $conn;
@@ -39,7 +39,7 @@ if (!$mysqli) {
 
 $TABLE = 'plants';
 
-/* Helper: lijst van verplichte kolommen zonder default (excl. auto_increment) */
+// Helpt lijst van verplichte kolommen zonder default
 function required_columns_without_default(mysqli $m, string $table): array
 {
     $sql = "SELECT COLUMN_NAME, DATA_TYPE, EXTRA
@@ -62,7 +62,7 @@ function required_columns_without_default(mysqli $m, string $table): array
     return $out;
 }
 
-/* Form handling */
+// Form handling
 $messageHtml = '';
 $redirectHtml = '';
 $popupJs = '';
@@ -85,13 +85,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $types = 'sssssi';
         $values = [$name, $info, $soort, $watering, $sunlight, $owner_id];
 
-        // Haal verplichte kolommen zonder default op en vul veilige standaardwaarden in
+        // Haalt verplichte kolommen zonder default op en vult gevraagde waardes
         $required = required_columns_without_default($mysqli, $TABLE);
         $already = array_flip($cols); // om duplicaten te voorkomen
 
         foreach ($required as $col) {
             $cname = $col['name'];
-            if (isset($already[$cname])) continue; // sla over als we 'm al zetten
+            if (isset($already[$cname])) continue;
 
             $dtype = $col['type'];
             // Bepaal veilige default op basis van type
@@ -120,7 +120,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     $types .= 's';
                     break;
 
-                default: // varchar, char, text, json, etc.
+                default:
                     $def = '';
                     $types .= 's';
             }
@@ -130,7 +130,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $already[$cname] = true;
         }
 
-        // Bouw en voer INSERT uit
+        // Bouw en voer INSERT in en eruit
         $sql = "INSERT INTO `$TABLE` (`" . implode("`,`", $cols) . "`) VALUES (" . implode(",", $placeholders) . ")";
         $stmt = $mysqli->prepare($sql);
 
@@ -183,6 +183,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <script src="Includes/JS/add-plant.js" defer></script>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <style>
+        /*Zorgt voor die bar wanneer je redirected wordt naar index*/
         .redirect-wrap {
             margin: 1rem 0;
         }

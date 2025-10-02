@@ -18,10 +18,11 @@ if (isset($_POST['submit'])) {
     if ($username === "") {
         $errors['username'] = "Enter a username";
     }
-    if ($password === "") {
-        $errors['password'] = "Enter a password";
+    if ($password == '') {
+    $errors['password'] = 'Wachtwoord vereist.';
+    } elseif (strlen($password) < 8) {
+    $errors['password'] = 'Wachtwoord moet minimaal 8 tekens bevatten.';
     }
-
     // Proceed only if there are no validation errors
     if (empty($errors)) {
         // SELECT the admin from the database, based on the name
