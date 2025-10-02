@@ -66,6 +66,15 @@ p {
     display: none; /* hide all steps */
 }
 
+#step2 img {
+    margin-top: 50px;
+}
+
+#step3 img {
+    margin-top: 20px;
+}
+
+
 .step:first-child {
     display: block; /* show the first step */
 }
