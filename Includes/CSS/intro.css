@@ -56,12 +56,39 @@ p {
     align-items: center;
 }
 
+.step {
+    display: none; /* hide all steps */
+}
+
+.step:first-child {
+    display: block; /* show the first step */
+}
+
 .nextbtn {
     background-color: #7da44d;
 
     padding: 15px 60px;
     margin-top: 20px;
     font-family: 'Fredoka', sans-serif;
+}
+
+#stepIndicators {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.dot {
+    height: 12px;
+    width: 12px;
+    margin: 0 5px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.3s;
+}
+
+.dot.active {
+    background-color: #4CAF50; /* or any color you like */
 }
 
 
