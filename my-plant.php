@@ -4,6 +4,7 @@
 /** @var mysqli $db
  */
 require_once 'Includes/connectie.php';
+require_once 'Includes/login_check.php';
 
 if (isset($_GET['id'])) {
     $plantId = $_GET['id']; //undo this once an idea is passed on to the next page

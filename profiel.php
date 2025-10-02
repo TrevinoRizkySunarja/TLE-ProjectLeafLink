@@ -2,7 +2,7 @@
 /** @var mysqli $db */
 session_start();
 require_once 'includes/connectie.php';
-
+require_once 'includes/login_check.php';
 
 if (isset($_SESSION['user'])) {
     $username = $_SESSION['user']['username'];
@@ -20,7 +20,6 @@ if (isset($_SESSION['user'])) {
     $userId = 0;
     $plantCount = 0;
     $badgeCount = 0;
-
 }
 
 if (isset($_GET['search'])) {
@@ -66,11 +65,8 @@ if (mysqli_num_rows($resultPlants) !== 0) {
 </head>
 <body>
 <?php include 'Includes/nav.php'; ?>
-
-
 <header>
     <h1>Profiel</h1>
-
 </header>
 
 <main>

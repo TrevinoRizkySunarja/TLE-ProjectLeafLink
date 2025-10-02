@@ -19,10 +19,11 @@ if (isset($_POST['submit'])) {
         $errors['username'] = "Enter a username";
     }
     if ($password == '') {
-    $errors['password'] = 'Wachtwoord vereist.';
-    } elseif (strlen($password) < 8) {
-    $errors['password'] = 'Wachtwoord moet minimaal 8 tekens bevatten.';
+        $errors['password'] = 'Wachtwoord vereist.';
     }
+//    } elseif (strlen($password) < 8) {
+//    $errors['password'] = 'Wachtwoord moet minimaal 8 tekens bevatten.';
+//    }
     // Proceed only if there are no validation errors
     if (empty($errors)) {
         // SELECT the admin from the database, based on the name
@@ -69,60 +70,61 @@ if (isset($_POST['submit'])) {
     <link rel="stylesheet" href="Includes/CSS/style.css">
     <link rel="stylesheet" href="Includes/CSS/login.css">
     <title>Login</title>
-    <script src="Includes/JS/login.js"></script> 
+    <script src="Includes/JS/login.js"></script>
 </head>
 <body>
-    <?php include 'Includes/hoofd.php'; ?>
-    <form action="" method="post">
+<?php include 'Includes/hoofd.php'; ?>
+<form action="" method="post">
+    <div>
         <div>
-            <div>
-                <label for="username">Gebruikersnaam</label>
-            </div>
-            <div>
-                <input id="username" name="username" type="text" placeholder="Voer gebruikersnaam in" value="<?= htmlspecialchars($_POST['username'] ?? '') ?>">
-                <p class="help is-danger">
-                    <?= $errors['username'] ?? '' ?>
-                </p>
-            </div>
+            <label for="username">Gebruikersnaam</label>
         </div>
         <div>
-            <div>
-                <label for="password">Wachtwoord</label>
-            </div>
-            <div>
-                <input id="password" name="password" type="password" placeholder="Voer wachtwoord in">
-                <p class="help is-danger">
-                    <?= $errors['password'] ?? '' ?>
-                </p>
-            </div>
+            <input id="username" name="username" type="text" placeholder="Voer gebruikersnaam in"
+                   value="<?= htmlspecialchars($_POST['username'] ?? '') ?>">
+            <p class="help is-danger">
+                <?= $errors['username'] ?? '' ?>
+            </p>
         </div>
-        <div class="button-container">
-            <div class="button-link">
-                <button type="button" onclick="window.location.href='registratie.php'">Registratie</button>
-            </div>
-            <div class="button-link">
-                <button type="submit" name="submit">Login</button>
-            </div>
+    </div>
+    <div>
+        <div>
+            <label for="password">Wachtwoord</label>
         </div>
-        <?php if (
-            isset($_POST['submit']) && 
-            empty($errors['username']) && 
-            empty($errors['password']) && 
+        <div>
+            <input id="password" name="password" type="password" placeholder="Voer wachtwoord in">
+            <p class="help is-danger">
+                <?= $errors['password'] ?? '' ?>
+            </p>
+        </div>
+    </div>
+    <div class="button-container">
+        <div class="button-link">
+            <button type="button" onclick="window.location.href='registratie.php'">Registratie</button>
+        </div>
+        <div class="button-link">
+            <button type="submit" name="submit">Login</button>
+        </div>
+    </div>
+    <?php if (
+            isset($_POST['submit']) &&
+            empty($errors['username']) &&
+            empty($errors['password']) &&
             isset($errors['loginFailed'])
-        ): ?>
+    ): ?>
         <p class="help is-danger" style="color: red;">
             <?= htmlspecialchars($errors['loginFailed']) ?>
         </p>
-        <?php endif; ?>
-    </form>
-    <div class="shelf-container">
-        <div class="books"></div>
-        <div class="shelf"></div>
-        <div class="cat"></div>
-    </div>
-    <div id="tile-container">
-        <div class="tiles"></div>
-        <div class="bottom-plants"></div>
-    </div>
+    <?php endif; ?>
+</form>
+<div class="shelf-container">
+    <div class="books"></div>
+    <div class="shelf"></div>
+    <div class="cat"></div>
+</div>
+<div id="tile-container">
+    <div class="tiles"></div>
+    <div class="bottom-plants"></div>
+</div>
 </body>
 </html>
