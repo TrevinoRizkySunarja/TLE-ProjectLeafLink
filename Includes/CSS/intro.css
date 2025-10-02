@@ -16,12 +16,16 @@ body {
     background-attachment: fixed;
     background-size: 125%;
     overflow: hidden; /* Hide scrollbars */
+    display: flex;
+    justify-content: center;  /* horizontal center */
+    align-items: center;      /* vertical center */
+    min-height: 100vh;        /* make sure body fills screen */
+    margin: 0;
 
 }
 
-.overlay {
+.welkom-container {
     background: white;
-    padding-bottom: 30px;
     border-radius:12px;
     box-shadow:0 8px 20px rgba(0,0,0,0.15);
     max-width:600px;
@@ -31,12 +35,19 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     font-family: 'Fredoka', sans-serif;
+    text-align: center;
+    min-height: 500px;    /* voorkomt dat box te klein wordt */
+    max-height: 90vh;
+
+
 }
 
-.overlay img {
+.welkom-container img {
     width: 100%;
-    height: auto;
+    max-height: 400px;   /* alle afbeeldingen dezelfde hoogte */
+    object-fit: contain;
 }
 
 h1 {
@@ -50,11 +61,6 @@ p {
     margin-top: 0;
 }
 
-#step1 {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
 
 .step {
     display: none; /* hide all steps */
@@ -64,30 +70,33 @@ p {
     display: block; /* show the first step */
 }
 
-.nextbtn {
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* ruimte tussen knoppen */
+    margin-top: 20px;
+}
+
+.nextbtn,
+.backbtn,
+#startBtn {
     background-color: #7da44d;
     padding: 15px 60px;
-    margin-top: 20px;
     font-family: 'Fredoka', sans-serif;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    color: white;
 }
 
 .backbtn {
     background-color: #9b7354;
-    padding: 15px 60px;
-    margin-top: 20px;
-    font-family: 'Fredoka', sans-serif;
-}
-
-#startBtn {
-    background-color: #7da44d;
-    padding: 15px 60px;
-    margin-top: 20px;
-    font-family: 'Fredoka', sans-serif;
 }
 
 #stepIndicators {
     text-align: center;
     margin-top: 20px;
+
 }
 
 .dot {
