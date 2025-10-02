@@ -24,15 +24,17 @@
 
             <div class="step" id="step2">
                 <img src="Includes/images/monsterplant.png">
-                <h2>Wat kun je doen?</h2>
+                <h2>Ontdek!</h2>
                 <p>Voeg je planten toe, verdien badges en beheer je planten makkelijk.</p>
+                <button class="backbtn">Vorige</button>
                 <button class="nextbtn">Volgende</button>
         </div>
 
         <div class="step" id="step3">
             <img src="Includes/images/plantBook.png">
-            <h2>Klaar om een plantenexpert te worden? </h2>
+            <h2>Klaar om plantenexpert te worden? </h2>
             <p>Maak nu je LeafLink account aan!</p>
+            <button class="backbtn">Vorige</button>
             <button id="startBtn">Start</button>
         </div>
 
