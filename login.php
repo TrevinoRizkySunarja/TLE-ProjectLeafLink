@@ -33,7 +33,7 @@ if (isset($_POST['submit'])) {
         $stmt->execute();
         $result = $stmt->get_result();
 
-        // Check if the admin exists
+        // Check if the user exists
         if ($result->num_rows === 1) {
             // Get admin data from result
             $user = $result->fetch_assoc();
@@ -44,7 +44,7 @@ if (isset($_POST['submit'])) {
 
                 // Password is correct
 
-                // Store the admin in the session
+                // Store the user in the session
                 $_SESSION['user'] = $user; // Assuming admin details are stored in session
 
                 // Redirect to secure page
